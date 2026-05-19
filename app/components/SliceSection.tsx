@@ -20,10 +20,10 @@ export default function SliceSection({ wage }: { wage: string }) {
 
   async function handleSubmit() {
     if (!task.trim() || loading) return;
-    setLoading(true);
+    loading = true;
     setResult(null);
     try {
-      const res = await fetch("/api", { // 📌 엔드포인트 경로 수정
+      const res = await fetch("/api/slice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ task, wage }),

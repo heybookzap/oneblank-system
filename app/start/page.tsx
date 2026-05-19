@@ -9,6 +9,7 @@ export default function StartPage() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [goal, setGoal] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const registerUser = async () => {
@@ -40,6 +41,34 @@ export default function StartPage() {
   }, []);
 
   const nextStep = () => setStep((prev) => prev + 1);
+
+  const handleGoalSubmit = async () => {
+    if (!goal.trim() || loading) return;
+    setLoading(true);
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        router.push('/auth/login');
+        return;
+      }
+
+      const { error: goalError } = await supabase
+        .from('goals')
+        .insert([{ user_id: user.id, content: goal, status: 'ACTIVE' }]);
+      if (goalError) throw goalError;
+
+      await supabase.from('profiles').update({ 
+        hourly_wage: 100000,
+        weekend_rest: true 
+      }).eq('id', user.id);
+
+      setStep(3);
+    } catch (err) {
+      alert('시스템 동기화 중 오류가 발생했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-black text-white relative overflow-hidden font-pretendard selection:bg-[#C2A35D] selection:text-black">
@@ -85,10 +114,10 @@ export default function StartPage() {
               <div className="space-y-4">
                 <p className="text-zinc-200 text-lg font-light">시스템에 위임할 단 하나의</p>
                 <h2 className="font-serif italic font-bold text-[#C2A35D] text-3xl tracking-tight uppercase">
-                  '거대 목표(Dream Outcome)'
+                  &apos;거대 목표(Dream Outcome)&apos;
                 </h2>
                 <p className="text-zinc-200 text-lg font-light">를 입력하십시오.</p>
-                <p className="text-zinc-600 text-xs font-light pt-2">(예: 6개월 내 월 매출 1억 돌파, 두 번째 브랜드 성공적 런칭 등)</p>
+                <p className="text-zinc-600 text-xs font-light pt-2">(예: 6개월 내 월 매출 1억 돌파, 신규 브랜드 성공적 런칭 등)</p>
               </div>
               <textarea 
                 value={goal}
@@ -102,11 +131,11 @@ export default function StartPage() {
                   이 목표를 기준으로 시스템이 대표님만의 맞춤형 실행 경로를 학습합니다. 목표 변경 시 재설정 기간이 소요되니 신중히 입력해 주십시오.
                 </p>
                 <button 
-                  onClick={nextStep}
-                  disabled={!goal.trim()}
+                  onClick={handleGoalSubmit}
+                  disabled={!goal.trim() || loading}
                   className="w-full py-6 bg-zinc-900 text-zinc-500 text-sm font-bold tracking-[0.2em] uppercase disabled:opacity-50 hover:bg-[#C2A35D] hover:text-black transition-all"
                 >
-                  내 뇌의 통제권 위임하기
+                  {loading ? "SYSTEM SYNCING..." : "내 뇌의 통제권 위임하기"}
                 </button>
               </div>
             </div>

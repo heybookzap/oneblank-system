@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 export default function CleansingPopup({ tier, onDismiss }: { tier: string; onDismiss: () => void }) {
   const getMessage = () => {
-    // 📌 티어 명칭을 우리 시스템 표준(VVIP, Core)에 맞게 교정했습니다.
     if (tier === "VVIP" || tier === "Elite") return "엘리트 방어 시스템이 재정렬되었습니다. 완벽히 명료한 상태로 시작하십시오.";
     if (tier === "Core") return "시스템 인지 기록이 정화되었습니다. 이제 본질에만 집중하십시오.";
     return "어제의 모든 부하가 소멸되었습니다. 가벼운 마음으로 진입하십시오.";
@@ -17,7 +16,6 @@ export default function CleansingPopup({ tier, onDismiss }: { tier: string; onDi
         animate={{ y: 0, opacity: 1 }} 
         className="max-w-sm w-full text-center space-y-10 p-10 border border-zinc-900 bg-[#050505] rounded-[32px] shadow-2xl relative overflow-hidden"
       >
-        {/* 상단 장식선 */}
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C2A35D]/50 to-transparent"></div>
         
         <div className="space-y-4">
@@ -37,4 +35,3 @@ export default function CleansingPopup({ tier, onDismiss }: { tier: string; onDi
     </div>
   );
 }
-

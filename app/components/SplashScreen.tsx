@@ -16,7 +16,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
 
   useEffect(() => {
     setCopy(NANO_COPY[Math.floor(Math.random() * NANO_COPY.length)]);
-    const timer = setTimeout(onComplete, 2500); // 럭셔리한 호흡을 위해 0.3초 추가
+    const timer = setTimeout(onComplete, 2500);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -27,8 +27,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-0 z-[1000] bg-[#050505] flex flex-col items-center justify-center px-6 overflow-hidden font-pretendard"
     >
-      {/* 5% 골드 법칙: 은은한 배경 아우라 */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(194,163,93,0.03)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(194,163,93,0.03)_0%,_transparent_70%)] pointer-events-none" />
 
       <motion.div
         initial={{ scale: 0.98, opacity: 0 }}
@@ -57,7 +56,6 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         </div>
       </motion.div>
 
-      {/* 하단 브랜드 태그: 세로형 바 디자인으로 권위 부여 */}
       <div className="absolute bottom-16 flex flex-col items-center gap-4 opacity-30">
         <div className="w-[1px] h-10 bg-gradient-to-b from-[#C2A35D] to-transparent" />
         <p className="text-[8px] tracking-[0.5em] text-[#C2A35D] uppercase font-bold">

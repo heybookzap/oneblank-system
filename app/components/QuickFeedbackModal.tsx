@@ -18,7 +18,6 @@ const LEVELS = [
   { score: 5, label: "한계", sub: "에너지 소진" },
 ] as const;
 
-// 📌 브랜드 시그니처 골드(#C2A35D)를 마스터 컬러로 적용
 const SCORE_STYLES: Record<number, { idle: string; active: string; bar: string }> = {
   1: { idle: "border-zinc-900 text-zinc-600", active: "border-[#C2A35D] bg-[#C2A35D]/5 text-[#C2A35D]", bar: "bg-zinc-600" },
   2: { idle: "border-zinc-900 text-zinc-600", active: "border-[#C2A35D] bg-[#C2A35D]/5 text-[#C2A35D]", bar: "bg-[#C2A35D]/40" },
@@ -35,7 +34,6 @@ export default function QuickFeedbackModal({ isOpen, missionTitle, onSubmit, onC
     if (submitted) return;
     setSelected(score);
     setSubmitted(true);
-    // 📌 유저가 결과를 인지할 수 있도록 짧은 딜레이 후 콜백 실행
     setTimeout(() => {
       onSubmit(score);
       setSelected(null);

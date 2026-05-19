@@ -268,7 +268,7 @@ export default function CustomerDashboardPage() {
               <div className="bg-[#080808] border border-zinc-800 rounded-3xl p-10 md:p-14 space-y-8 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C2A35D]/40 to-transparent"></div>
                 <div className="flex justify-between items-center border-b border-zinc-800/60 pb-6">
-                  <h2 className="text-xl font-medium text-white tracking-wide">오늘의 증거 리포트</h2>
+                  <h2 className="textxl font-medium text-white tracking-wide">오늘의 증거 리포트</h2>
                   <div className="border border-[#C2A35D]/30 text-[#C2A35D] px-6 py-2.5 rounded-md text-[13px] font-bold tracking-widest bg-[#C2A35D]/5">C: {condition}</div>
                 </div>
                 <div className="space-y-8 text-left">
@@ -359,7 +359,6 @@ export default function CustomerDashboardPage() {
             </motion.div>
           )}
 
-          {/* 📌 [추가] ROI_RECEIPT 뷰 */}
           {view === 'ROI_RECEIPT' && (
             <motion.div key="p-roi" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="z-10 w-full max-w-2xl px-6">
               <h2 className="text-3xl font-serif font-bold text-white mb-10">Monthly Performance Report</h2>
@@ -381,7 +380,6 @@ export default function CustomerDashboardPage() {
             </motion.div>
           )}
 
-          {/* 📌 [추가] UPSELL 뷰 */}
           {view === 'UPSELL' && (
             <motion.div key="p-up" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="z-10 w-full max-w-xl px-6">
               <div className="bg-gradient-to-b from-[#111] to-black border border-[#C2A35D]/30 rounded-3xl p-12 space-y-8 shadow-[0_0_50px_rgba(194,163,93,0.1)]">
@@ -394,11 +392,10 @@ export default function CustomerDashboardPage() {
             </motion.div>
           )}
 
-          {/* 📌 [추가] WEEKEND_PAUSED 뷰 */}
           {view === 'WEEKEND_PAUSED' && (
             <motion.div key="p-wp" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="z-10 flex flex-col items-center">
               <div className="w-20 h-20 border border-zinc-800 rounded-full flex items-center justify-center mb-10 text-zinc-500 text-3xl font-light">OFF</div>
-              <h2 className="text-3xl font-serif font-bold text-white mb-6">주말 인지 단절 모드 가동 중</h2>
+              <div className="text-3xl font-serif font-bold text-white mb-6">주말 인지 단절 모드 가동 중</div>
               <p className="text-zinc-400 text-[15px] max-w-md leading-relaxed">대표님은 현재 주말 휴식 옵션을 활성화한 상태입니다. 시스템은 월요일 05:00 AM까지 대표님의 뇌를 보호하며 모든 알림을 차단합니다. 완벽하게 비우십시오.</p>
               <button onClick={() => router.push('/')} className="mt-12 text-zinc-600 text-[11px] font-bold tracking-widest uppercase border-b border-zinc-800 pb-1">Exit System</button>
             </motion.div>

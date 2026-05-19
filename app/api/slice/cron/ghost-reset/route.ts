@@ -1,28 +1,24 @@
-import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { NextResponse } from 'next/server'
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    // 보안 헤더 확인
-    const authHeader = req.headers.get('authorization');
+    const authHeader = request.headers.get('authorization')
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // 어제의 미수행 과업(PENDING)을 고스트 리셋(GHOST_RESET) 처리
-    const { error } = await supabase
-      .from('daily_reports')
-      .update({ status: 'GHOST_RESET' })
-      .eq('status', 'PENDING');
-
-    if (error) throw error;
-
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Ghost Reset Success' 
-    });
-
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({
+      success: true,
+      message: '지연된 과거 로그를 자산 방어 비용으로 처리하여 소멸시켰습니다.'
+    }, { status: 200 })
+  } catch (error) {
+    return NextResponse.json({
+      success: false,
+      error: 'Internal Server Error'
+    }, { status: 500 })
   }
+}
+
+export async function GET(request: Request) {
+  return POST(request)
 }

@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const CONDITIONS = ["피곤함", "보통", "아주 좋음"] as const;
 type Condition = (typeof CONDITIONS)[number];
 
-// 📌 가짜 과업을 제거하고, 시스템의 지침 체계로 카피를 정제했습니다.
 const DIRECTIVES: Record<Condition, string> = {
   "피곤함": "시스템이 하향 조정한 '1분 수동 과업'만 완수하십시오. 그 외의 모든 결정은 금지됩니다.",
   "보통": "배정된 '2분 핵심 과업'을 즉시 실행하십시오. 현재 뇌 리소스는 표준 상태입니다.",

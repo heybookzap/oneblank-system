@@ -36,7 +36,7 @@ export default function LearnMorePage() {
         >
           <p className="text-[#C2A35D] text-[10px] tracking-[0.5em] font-medium mb-8 uppercase italic font-serif">Service Protocol</p>
           <h1 className="text-4xl md:text-6xl font-light tracking-tighter text-white break-keep leading-snug mb-8">
-            대표님의 &apos;고민&apos;을 <br className="md:hidden" />대신합니다.
+            대표님의 &apos;고민&apos;을 <br />대신합니다.
           </h1>
           <div className="w-[1px] h-12 bg-gradient-to-b from-[#C2A35D] to-transparent mx-auto mb-8 opacity-50"></div>
           <p className="text-zinc-400 text-lg md:text-xl font-light tracking-tight break-keep">
@@ -64,7 +64,7 @@ export default function LearnMorePage() {
               },
               {
                 num: "02",
-                point: "매일 아침 9시",
+                point: "매일 새벽 5시",
                 result: "딱 1개만 시킵니다."
               },
               {

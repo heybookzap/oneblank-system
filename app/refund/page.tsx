@@ -7,7 +7,7 @@ export default function RefundPage() {
         <h1 className="text-3xl font-serif font-bold tracking-tight text-[#C2A35D]">취소 및 환불 정책</h1>
         
         <div className="bg-[#0A0A0A] border border-[#C2A35D]/40 p-10 rounded-3xl space-y-6 shadow-[0_0_30px_rgba(194,163,93,0.1)]">
-          <h2 className="text-[#C2A35D] text-xl font-bold">🛡️ [ 14일 인지 방어 보증 (Risk-Free) ]</h2>
+          <h2 className="text-[#C2A35D] text-xl font-bold">[ 14일 인지 방어 보증 (Risk-Free) ]</h2>
           <p className="text-zinc-200 text-[17px] leading-relaxed break-keep font-medium">
             ONE BLANK는 대표님의 변화를 100% 보장합니다. 결제 후 14일 동안, 매일 아침 시스템이 내리는 '2분 지침'을 단 하루도 빠짐없이 완료(체크인)하셨음에도 불구하고 결정 피로가 줄어들지 않았다면?
           </p>
@@ -18,7 +18,7 @@ export default function RefundPage() {
 
         <div className="space-y-12 pt-16 border-t border-zinc-900">
           <section className="space-y-6">
-            <h2 className="text-white text-xl font-medium tracking-tight italic">⚖️ 법무/CS용 상세 환불 기준</h2>
+            <h2 className="text-white text-xl font-medium tracking-tight italic">법무/CS용 상세 환불 기준</h2>
             <div className="grid grid-cols-1 gap-8 text-zinc-400">
               <div className="space-y-4 bg-zinc-900/30 p-8 rounded-2xl border border-zinc-800">
                 <p className="text-white font-bold text-base">[ 14일 조건부 전액 환불 ]</p>

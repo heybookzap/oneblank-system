@@ -174,14 +174,14 @@ export default function LandingPage() {
                   <div className="space-y-10">
                     <h2 className="text-white text-2xl font-light tracking-tight border-b border-zinc-800 pb-4 font-serif italic">취소 및 환불 정책</h2>
                     <div className="bg-[#0A0A0A] border border-[#C2A35D]/30 p-10 rounded-3xl space-y-6">
-                      <h2 className="text-[#C2A35D] text-lg font-bold">🛡️ [ 14일 인지 방어 보증 (Risk-Free) ]</h2>
+                      <h2 className="text-[#C2A35D] text-lg font-bold">[ 14일 인지 방어 보증 (Risk-Free) ]</h2>
                       <p className="text-zinc-200 text-[16px] leading-relaxed break-keep font-medium">
                         시스템 이용 후 14일 이내, 단 한 번이라도 서비스가 대표님의 인지 효율을 개선하지 못했다고 판단하신다면 그건 저희가 실패한 것입니다. 이유를 묻지 않고 즉시 100% 전액 환불해 드립니다.
                       </p>
                     </div>
                     <div className="space-y-10 pt-10 border-t border-zinc-900">
                       <section className="space-y-4">
-                        <h2 className="text-white text-lg font-medium tracking-tight italic">⚖️ 법무/CS용 상세 환불 기준</h2>
+                        <h2 className="text-white text-lg font-medium tracking-tight italic">법무/CS용 상세 환불 기준</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-zinc-400 leading-relaxed">
                           <div className="space-y-4 bg-zinc-900/30 p-6 rounded-2xl">
                             <p className="text-white font-bold">[ 14일 조건부 전액 환불 ]</p>

@@ -37,7 +37,6 @@ export default function GoalSetupPage() {
         .insert([{ user_id: user.id, content: goal, status: 'ACTIVE' }])
       if (goalError) throw goalError
       
-      // 📌 시급/주말 설정은 생략하고 기본값으로 프로필 업데이트
       await supabase.from('profiles').update({ 
         hourly_rate: 100000,
         weekend_rest: true 
@@ -122,7 +121,6 @@ export default function GoalSetupPage() {
 
         {step === 5 && (
           <motion.div key="5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }} className="z-10 text-center space-y-10 w-full max-w-2xl mx-auto">
-            {/* Minimal 3D Shield Effect */}
             <div className="relative mx-auto mb-8 w-24 h-24">
               <div className="absolute inset-0 bg-[#C2A35D] opacity-10 blur-3xl rounded-full animate-pulse"></div>
               <div className="relative w-24 h-24 rounded-full bg-[#0A0A0A] border border-[#C2A35D]/30 flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">

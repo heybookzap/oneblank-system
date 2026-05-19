@@ -100,6 +100,29 @@ export default function AdminDashboardPage() {
     setEditingUser(null)
   }
 
+  const conditionPreviewMapping: Record<string, { action: string; benefit: string; loss: string; mindset: string }> = {
+    '아주 좋음': {
+      action: '"최상의 인지 효율 상태입니다. 지금 바로 핵심 사업의 실행 계획 3가지만 물리적 동사로 확정하십시오."',
+      benefit: '목표 달성 가속도 200% 증가',
+      loss: '최적의 인지 효율 구간 영구 증발',
+      mindset: '"당신의 1시간은 수십만 원입니다. 지금 고민하는 그 일이 그 이상의 가치를 창출합니까?"'
+    },
+    '보통': {
+      action: '"감정에 휘둘리지 않는 최적의 상태입니다. 어제 세워둔 우선순위 1번 과제를 25분간 즉시 실행하십시오."',
+      benefit: '안정적인 루틴 유지 및 복리 성과',
+      loss: '평범한 하루로 전락하여 경쟁 우위 상실',
+      mindset: '"평범한 컨디션일 때 묵묵히 하는 실행이 진짜 실력을 만듭니다."'
+    },
+    '피곤함': {
+      action: '"오늘은 뇌를 쉬게 하십시오. 관련 폴더만 바탕화면에 생성하고 즉시 종료하십시오. (1분 소요)"',
+      benefit: '의사결정 피로도 30% 즉시 감소',
+      loss: '완벽주의 발동으로 인한 48시간 지연',
+      mindset: '"지금 버리지 못하는 그 한 가지가, 당신의 불안감을 채우기 위한 방어기제는 아닙니까?"'
+    }
+  }
+
+  const activePreview = conditionPreviewMapping[condition] || conditionPreviewMapping['보통']
+
   return (
     <main className="min-h-screen bg-[#050505] text-white flex flex-col font-pretendard relative selection:bg-[#C2A35D] selection:text-black overflow-y-auto">
       <div className="fixed top-0 left-0 w-full bg-black/95 border-b border-zinc-800 z-[100] backdrop-blur-2xl px-6 py-4 flex justify-between items-center">
@@ -276,7 +299,7 @@ export default function AdminDashboardPage() {
                           <h3 className="text-[#C2A35D] text-[13px] font-bold tracking-[0.15em] uppercase">▮ 1. 지금 당장 할 일</h3>
                           <div className="bg-[#111111] border border-zinc-800 rounded-2xl p-8 md:p-10">
                             <p className="text-[14px] md:text-[15px] font-light leading-[1.8] text-zinc-100 tracking-wide break-keep">
-                              {condition === '피곤함' ? '"오늘은 뇌를 쉬게 하십시오. 관련 폴더만 바탕화면에 생성하고 즉시 종료하십시오. (1분 소요)"' : '"최상의 인지 효율 상태입니다. 지금 바로 핵심 사업의 실행 계획 3가지만 물리적 동사로 확정하십시오."'}
+                              {activePreview.action}
                             </p>
                           </div>
                         </div>
@@ -287,20 +310,20 @@ export default function AdminDashboardPage() {
                               <p className="text-zinc-400 text-[13px] flex items-center gap-3 tracking-wide">
                                 <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-[12px] font-extrabold shadow-[0_0_10px_rgba(255,255,255,0.4)]">O</span> 하면 얻는 것
                               </p>
-                              <p className="text-white text-[15px] font-medium tracking-wide break-keep leading-relaxed">{condition === '피곤함' ? '의사결정 피로도 30% 즉시 감소' : '목표 달성 가속도 200% 증가'}</p>
+                              <p className="text-white text-[15px] font-medium tracking-wide break-keep leading-relaxed">{activePreview.benefit}</p>
                             </div>
                             <div className="bg-[#111111] border border-[#5A1515]/30 rounded-2xl p-8 space-y-4 shadow-[0_0_15px_rgba(90,21,21,0.1)]">
                               <p className="text-zinc-400 text-[13px] flex items-center gap-3 tracking-wide">
                                 <span className="bg-[#6B1C1C] text-white border border-[#8B2222] rounded-full w-6 h-6 flex items-center justify-center text-[12px] font-extrabold shadow-[0_0_12px_rgba(180,30,30,0.4)]">X</span> 미루면 잃는 것
                               </p>
-                              <p className="text-zinc-300 text-[15px] font-medium tracking-wide break-keep leading-relaxed">{condition === '피곤함' ? '완벽주의 발동으로 인한 48시간 지연' : '최적의 인지 효율 구간 영구 증발'}</p>
+                              <p className="text-zinc-300 text-[15px] font-medium tracking-wide break-keep leading-relaxed">{activePreview.loss}</p>
                             </div>
                           </div>
                         </div>
                         <div className="space-y-4">
                           <h3 className="text-[#C2A35D] text-[13px] font-bold tracking-[0.15em] uppercase">▮ 3. 생각 뒤집기</h3>
                           <p className="text-zinc-400 text-[14px] font-light leading-[1.8] italic tracking-wide break-keep pr-4">
-                            {condition === '피곤함' ? '"지금 버리지 못하는 그 한 가지가, 고객이 아닌 당신의 불안감을 채우기 위한 방어기제는 아닙니까?"' : '"당신의 1시간은 수십만 원입니다. 지금 고민하는 그 일이 그 이상의 가치를 창출합니까?"'}
+                            {activePreview.mindset}
                           </p>
                         </div>
                       </div>
@@ -350,7 +373,7 @@ export default function AdminDashboardPage() {
                       <div className="text-zinc-400 text-[15px] md:text-[16px] font-light leading-[1.7] tracking-wide break-keep space-y-1">
                         <p>대표님은 방금 가장 핵심적인 과업을 해치웠습니다.</p>
                         <p>지금부터 머릿속에 떠오르는 '더 해야 하지 않을까?'라는 생각은,</p>
-                        <p>완벽주의가 만들어낸 가짜 불안이자 내일의 에너지를 갉아먹는 '과잉'입니다.</p>
+                        <p>완벽주의가 만들어낸 가짜 불안이자 내일의 에너지를 갉아먹는 '과잉' Kremlin.</p>
                         <div className="pt-14 mt-14 border-t border-zinc-800/80">
                           <p className="text-white text-[17px] md:text-[18px] font-medium tracking-wide">더 이상의 실행을 통제하십시오.</p>
                         </div>

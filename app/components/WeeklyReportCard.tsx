@@ -17,12 +17,10 @@ export default function WeeklyReportCard({ userName, insight, appliedFrom, gener
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="w-full relative bg-[#080808] border border-zinc-900 rounded-[28px] overflow-hidden font-pretendard"
     >
-      {/* 📌 하이엔드 디테일: 좌측 골드 포인트 라인 */}
       <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-[#C2A35D] via-[#C2A35D]/20 to-transparent opacity-60" />
       
       <div className="px-8 pt-7 pb-8 flex flex-col gap-6">
 
-        {/* 헤더: 문서 형식의 레이아웃 */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
             <p className="text-[9px] font-bold tracking-[0.5em] text-[#C2A35D] uppercase font-serif italic">
@@ -46,14 +44,12 @@ export default function WeeklyReportCard({ userName, insight, appliedFrom, gener
           <div className="h-px flex-1 bg-zinc-900/50" />
         </div>
 
-        {/* 통찰 문구: Serif Italic으로 권위 부여 */}
         <p className="text-zinc-200 text-[16px] font-light leading-relaxed tracking-tight break-keep">
           <span className="text-[#C2A35D] font-serif italic font-bold text-lg mr-1">&ldquo;</span>
           {insight}
           <span className="text-[#C2A35D] font-serif italic font-bold text-lg ml-1">&rdquo;</span>
         </p>
 
-        {/* 푸터: 상태 정보 */}
         <div className="flex items-center justify-between pt-2">
           <div className="flex items-center gap-2">
             <div className="w-1 h-1 rounded-full bg-[#C2A35D] animate-pulse" />

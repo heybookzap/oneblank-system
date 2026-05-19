@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ShieldCheck, Zap, ArrowRight, Loader2 } from "lucide-react";
+import { Zap, ArrowRight, Loader2 } from "lucide-react";
 
 function ResultContent() {
   const searchParams = useSearchParams();
@@ -15,7 +15,6 @@ function ResultContent() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // 1. 저장된 데이터 호출
       const wage = localStorage.getItem("user_wage");
       const loss = localStorage.getItem("last_calculated_loss");
       
@@ -25,19 +24,18 @@ function ResultContent() {
       }
       setAnnualLoss(parseInt(loss).toLocaleString());
 
-      // 2. AI 슬라이서 엔진 호출 (api/route.ts)
       try {
-        const res = await fetch("/api", {
+        const res = await fetch("/api/slice", {
           method: "POST",
           body: JSON.stringify({ 
-            task: "현재 내 비즈니스에서 가장 병목이 되는 업무를 해결하고 싶다", // 기본 페르소나 적용
+            task: "현재 내 비즈니스에서 가장 병목이 되는 업무를 해결하고 싶다", 
             wage: parseInt(wage) 
           }),
         });
         const data = await res.json();
         setPrescription(data);
       } catch (err) {
-        console.error("AI 처방 실패");
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -58,12 +56,11 @@ function ResultContent() {
     <main className="min-h-screen bg-black text-white flex flex-col items-center py-20 px-6 font-pretendard relative">
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(194,163,93,0.03)_0%,_transparent_70%)] pointer-events-none"></div>
 
-      <header className="absolute top-0 w-full p-10 flex justify-center">
+      <header className="absolute top-0 left-0 w-full p-10 flex justify-center">
         <span className="text-[#C2A35D] font-serif italic text-xl font-bold uppercase tracking-widest">ONE BLANK</span>
       </header>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="z-10 w-full max-w-2xl space-y-16">
-        {/* 섹션 1: 손실 리포트 */}
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="z-10 w-full max-w-2xl space-y-16 mt-10">
         <div className="text-center space-y-4">
           <p className="text-zinc-500 text-xs tracking-[0.3em] uppercase">Diagnostic Report</p>
           <h1 className="text-4xl md:text-5xl font-light tracking-tight leading-tight">
@@ -72,7 +69,6 @@ function ResultContent() {
           </h1>
         </div>
 
-        {/* 섹션 2: AI 처방전 (Prescription) */}
         <div className="bg-[#080808] border border-[#C2A35D]/20 rounded-[32px] p-10 md:p-14 space-y-10 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C2A35D]/50 to-transparent"></div>
           

@@ -58,7 +58,7 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-6">
               <div className="bg-[#0A0A0A] border border-[#C2A35D]/30 p-8 rounded-2xl space-y-4">
-                <p className="text-[#C2A35D] font-bold text-base">🛡️ [ 14일 인지 방어 보증 (Risk-Free) ]</p>
+                <p className="text-[#C2A35D] font-bold text-base">[ 14일 인지 방어 보증 (Risk-Free) ]</p>
                 <p className="text-zinc-200 leading-relaxed">
                   ONE BLANK는 대표님의 변화를 100% 보장합니다. 결제 후 14일 동안, 매일 아침 시스템이 내리는 '2분 지침'을 단 하루도 빠짐없이 완료(체크인)하셨음에도 불구하고 결정 피로가 줄어들지 않았다면, 즉시 100% 전액 환불해 드립니다.
                 </p>
