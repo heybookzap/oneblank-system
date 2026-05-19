@@ -104,7 +104,7 @@ export default function CheckoutPage() {
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col items-center font-pretendard relative selection:bg-[#C2A35D] selection:text-black overflow-y-auto">
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(194,163,93,0.03)_0%,_transparent_70%)] pointer-events-none z-0"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(194,163,93,0.03)_0%,transparent_70%)] pointer-events-none z-0"></div>
 
       <header className="w-full px-8 md:px-16 py-10 z-40 flex justify-between items-center max-w-7xl mx-auto">
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => router.push('/')}>
@@ -231,7 +231,7 @@ export default function CheckoutPage() {
               </div>
             </motion.div>
           )}
-        </>
+        </AnimatePresence>
       </div>
 
       <AnimatePresence>
