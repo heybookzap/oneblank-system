@@ -64,15 +64,15 @@ export default function CheckoutPage() {
 
   const openPaymentModal = () => {
     if (!customerName || !customerEmail || !password) {
-      alert('성함, 이메일, 그리고 접속에 사용할 비밀번호를 모두 입력해 주십시오.')
+      alert('이름, 이메일, 그리고 사용할 비밀번호를 모두 입력해 주세요.')
       return
     }
     if (password.length < 6) {
-      alert('안전한 보안을 위해 비밀번호는 6자리 이상으로 설정해 주십시오.')
+      alert('안전한 보안을 위해 비밀번호는 6글자 이상으로 입력해 주세요.')
       return
     }
     if (!agreed) {
-      alert('ONE BLANK 자체 이용약관 및 환불규정에 동의해 주십시오.')
+      alert('이용약관과 환불규정에 동의해 주세요.')
       return
     }
     setShowTossModal(true)
@@ -118,7 +118,7 @@ export default function CheckoutPage() {
         <div className="text-center mb-12 mt-6 max-w-4xl mx-auto space-y-4">
           <p className="text-[#C2A35D] text-[11px] tracking-[0.4em] font-medium uppercase">Step {step.toString().padStart(2, '0')}</p>
           <h1 className="text-2xl md:text-4xl font-light tracking-tight text-white leading-tight break-keep">
-            {step === 1 ? "대표님의 현재 비즈니스 레벨이 직면한 '문제'에 맞는 플랜을 선택하십시오." : "권한 위임자 정보 입력"}
+            {step === 1 ? "대표님, 현재 내 상황과 고민에 딱 맞는 알맞은 플랜을 선택해 주세요." : "가입하는 분의 정보 입력"}
           </h1>
         </div>
 
@@ -135,22 +135,22 @@ export default function CheckoutPage() {
                         <span className="text-3xl font-serif italic font-bold text-white tracking-tighter">₩ 1,500,000</span>
                         <span className="text-zinc-500 text-sm">/ 월</span>
                       </div>
-                      <p className="text-[#C2A35D] text-[11px] font-light tracking-wide">상위 0.1% 여성 CEO 전용 (단 30명 한정 슬롯)</p>
+                      <p className="text-[#C2A35D] text-[11px] font-light tracking-wide">특별 회원 전용 (단 30명 한정 자리)</p>
                     </div>
                     <div className="space-y-4 border-t border-zinc-800 pt-6">
-                      {["AI의 한계를 넘어 마스터 디렉터가 직접 비즈니스 데이터 개입", "고도의 비즈니스 기밀과 전략적 의사결정 경로 1:1 맞춤 설계 및 관리", "군사 등급 수준의 영 지식 보안 인프라 기본 탑재"].map((f) => (
+                      {["인공지능(AI)을 넘어 최고 전문가가 내 일과 고민을 직접 꼼꼼하게 관리해 줍니다.", "중요한 비밀과 복잡한 결정을 1대1로 나에게 딱 맞춰 설계하고 이끌어 줍니다.", "개인 정보와 비밀을 완벽하게 숨겨주는 가장 안전한 보안 시스템이 들어있습니다."].map((f) => (
                         <div key={f} className="flex items-start gap-2 text-xs text-zinc-400 font-light leading-snug">
                           <span className="text-[#C2A35D]">•</span> <span>{f}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <button onClick={() => handlePlanSelect('premium')} className="w-full mt-10 py-4.5 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 rounded-xl">VVIP 인터뷰 세션 신청</button>
+                  <button onClick={() => handlePlanSelect('premium')} className="w-full mt-10 py-4.5 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 rounded-xl">특별 회원 상담 신청하기</button>
                 </div>
 
                 <div className="bg-[#0A0A0A] border border-[#C2A35D]/50 p-8 flex flex-col justify-between hover:border-[#C2A35D] transition-all duration-500 rounded-[32px] relative shadow-[0_20px_40px_rgba(194,163,93,0.08)] overflow-hidden scale-105 z-10">
                   <div className="absolute top-6 right-8">
-                    <span className="bg-[#C2A35D] text-black text-[9px] px-3 py-1.5 font-bold tracking-widest uppercase rounded-full">VVIP 추천 플랜</span>
+                    <span className="bg-[#C2A35D] text-black text-[9px] px-3 py-1.5 font-bold tracking-widest uppercase rounded-full">추천 플랜</span>
                   </div>
                   <div className="space-y-8 text-left">
                     <div className="space-y-3">
@@ -159,17 +159,17 @@ export default function CheckoutPage() {
                         <span className="text-3xl font-serif italic font-bold text-white tracking-tighter">₩ 3,900,000</span>
                         <span className="text-zinc-500 text-sm">/ 년</span>
                       </div>
-                      <p className="text-[#C2A35D] text-[11px] font-light tracking-wide">(2개월 무료 요금 혜택 제공 및 가치 동결 적용)</p>
+                      <p className="text-[#C2A35D] text-[11px] font-light tracking-wide">(2달 무료 혜택을 드리고 평생 똑같은 금액으로 보호해 드립니다)</p>
                     </div>
                     <div className="space-y-4 border-t border-zinc-800 pt-6">
-                      {["매일 아침 당신의 뇌 에너지를 갉아먹는 월 300만 원짜리 비서 노동 대체", "할 일을 고민하느라 허공에 증발하는 연간 1,200만 원의 무지 세금 즉시 방어", "입력된 과업을 새벽 5시마다 2분 내외의 기계적 동사로 해체하여 매일 아침 납품", "[보너스] 시스템 미판매 자산인 CEO 생산성 정밀 진단 툴 즉시 해제"].map((f) => (
+                      {["매일 아침 '뭐부터 해야 하지?' 고민하며 낭비하는 시간과 스트레스를 전부 대신 처리해 드립니다.", "할 일을 정하느라 아깝게 버려지는 소중한 기회비용과 시간을 확실하게 아껴드립니다.", "내가 해야 할 복잡한 일을 새벽 5시마다 2분 만에 끝낼 수 있는 아주 쉬운 행동으로 쪼개서 매일 아침 전해드립니다.", "[보너스] 내 행동과 계획 습관을 정밀하게 분석해 주는 특별한 진단 도구를 바로 열어드립니다."].map((f) => (
                         <div key={f} className="flex items-start gap-2 text-xs text-zinc-300 font-light leading-snug">
                           <span className="text-[#C2A35D]">•</span> <span>{f}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <button onClick={() => handlePlanSelect('yearly')} className="w-full mt-10 py-4.5 bg-white text-black text-[11px] font-bold tracking-widest uppercase hover:bg-[#C2A35D] transition-all duration-500 rounded-xl shadow-xl">가장 현명하게 VVIP로 시작하기</button>
+                  <button onClick={() => handlePlanSelect('yearly')} className="w-full mt-10 py-4.5 bg-white text-black text-[11px] font-bold tracking-widest uppercase hover:bg-[#C2A35D] transition-all duration-500 rounded-xl shadow-xl">가장 똑똑하게 시작하기</button>
                 </div>
 
                 <div className="bg-[#050505] border border-zinc-800 p-8 flex flex-col justify-between hover:border-zinc-700 transition-all duration-500 rounded-[32px]">
@@ -180,10 +180,10 @@ export default function CheckoutPage() {
                         <span className="text-3xl font-serif italic font-bold text-white tracking-tighter">₩ 390,000</span>
                         <span className="text-zinc-500 text-sm">/ 월</span>
                       </div>
-                      <p className="text-zinc-600 text-[11px] font-light tracking-wide">시스템 인프라 기본 요금제 사양</p>
+                      <p className="text-zinc-600 text-[11px] font-light tracking-wide">기본 요금제 사양</p>
                     </div>
                     <div className="space-y-4 border-t border-zinc-800 pt-6">
-                      {["의지력이 전혀 필요 없는 완벽히 통제된 무인화 시스템 환경 구축", "복잡한 목표를 단일 입력창에 쏟아내면 즉시 작동하는 인지적 아웃소싱 엔진", "매일 기상 직후 단 1가지 행동 지침 동기화 및 10초 퀵 체크인 작동"].map((f) => (
+                      {["내 굳은 의지가 없어도 무조건 움직일 수밖에 없는 완벽한 자동 환경을 만들어 줍니다.", "복잡한 고민을 입력창에 쏟아내면 머리 아픈 계획과 생각을 시스템이 전부 대신해 줍니다.", "매일 아침 눈뜨자마자 오늘 할 딱 1가지 행동을 받고, 끝난 뒤 10초 만에 누르면 끝납니다."].map((f) => (
                         <div key={f} className="flex items-start gap-2 text-xs text-zinc-400 font-light leading-snug">
                           <span className="text-[#C2A35D]">•</span> <span>{f}</span>
                         </div>
@@ -238,11 +238,11 @@ export default function CheckoutPage() {
         {showTossModal && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[200] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm overflow-y-auto">
             <div className="w-full max-w-2xl bg-white rounded-2xl flex flex-col relative shadow-2xl my-8">
-              <button onClick={() => setShowTossModal(false)} className="absolute top-5 right-6 text-zinc-400 hover:text-black z-10 text-3xl font-light">&times;</button>
+              <button onClick={() => setShowTossModal(false)} className="absolute top-5 right-6 text-zinc-400 hover:text-black z-10 text-3xl font-light">×</button>
               <div className="p-6 md:p-8 space-y-4 max-h-[85vh] overflow-y-auto">
                 <div className="text-center pb-2 border-b border-zinc-100">
                   <h2 className="text-black text-xl font-bold">안전 결제 시스템</h2>
-                  <p className="text-zinc-500 text-sm mt-1">결제 수단을 선택해 주십시오.</p>
+                  <p className="text-zinc-500 text-sm mt-1">결제할 방법을 선택해 주세요.</p>
                 </div>
                 <div id="payment-method" className="w-full"></div>
                 <div id="agreement" className="w-full"></div>

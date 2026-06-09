@@ -16,13 +16,13 @@ export default function PaymentCancelPage() {
         className="text-center space-y-12 z-10 max-w-xl"
       >
         <div className="space-y-6">
-          <p className="text-[#C2A35D] text-[11px] tracking-[0.5em] font-medium uppercase italic">Session Interrupted</p>
+          <p className="text-[#C2A35D] text-[11px] tracking-[0.5em] font-medium uppercase italic">Canceled</p>
           <h1 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
-            결제가 중단되었습니다.
+            결제가 중간에 멈췄습니다.
           </h1>
           <p className="text-zinc-500 text-lg font-light leading-relaxed break-keep">
-            인지 리소스를 방어할 준비가 아직 되지 않으셨나요?<br />
-            ONE BLANK의 문은 대표님이 준비되었을 때 언제든 다시 열려 있습니다.
+            아직 시작하기가 망설여지시나요?<br />
+            원하실 때 언제든 가벼운 마음으로 다시 찾아와 주세요.
           </p>
         </div>
 
@@ -37,13 +37,13 @@ export default function PaymentCancelPage() {
             onClick={() => router.push('/')} 
             className="text-zinc-600 hover:text-white text-[11px] tracking-widest uppercase transition-colors"
           >
-            메인화면으로 돌아가기
+            첫 화면으로 가기
           </button>
         </div>
       </motion.div>
 
       <footer className="absolute bottom-10 w-full text-center">
-        <p className="text-zinc-800 text-[9px] tracking-[0.4em] uppercase font-light italic">Permanent Protection Awaits.</p>
+        <p className="text-zinc-800 text-[9px] tracking-[0.4em] uppercase font-light italic">ONE BLANK · 마음 편한 행동 시스템</p>
       </footer>
     </main>
   )

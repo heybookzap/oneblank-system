@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: '지연된 과거 로그를 자산 방어 비용으로 처리하여 소멸시켰습니다.'
+      message: '지나간 어제의 일이나 미룬 일들은 모두 깨끗하게 지웠습니다.'
     }, { status: 200 })
   } catch (error) {
     return NextResponse.json({

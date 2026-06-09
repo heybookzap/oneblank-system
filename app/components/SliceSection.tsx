@@ -20,7 +20,7 @@ export default function SliceSection({ wage }: { wage: string }) {
 
   async function handleSubmit() {
     if (!task.trim() || loading) return;
-    loading = true;
+    setLoading(true);
     setResult(null);
     try {
       const res = await fetch("/api/slice", {
@@ -31,7 +31,7 @@ export default function SliceSection({ wage }: { wage: string }) {
       const data = await res.json();
       if (data.action && data.contribution) setResult(data);
     } catch {
-      alert("시스템 연결이 잠시 원활하지 않습니다. 다시 시도해 주십시오.");
+      alert("연결이 원활하지 않습니다. 잠시 후 다시 시도해 주세요.");
     } finally {
       setLoading(false);
     }
@@ -49,16 +49,16 @@ export default function SliceSection({ wage }: { wage: string }) {
         <AnimatePresence>
           {result && (
             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[9px] text-zinc-600 tracking-widest uppercase">
-              분석 완료
+              정리 완료
             </motion.span>
           )}
         </AnimatePresence>
       </div>
 
       <div className="space-y-2 text-left">
-        <h3 className="text-lg font-light text-white tracking-tight">지금 머릿속을 복잡하게 만드는 일은 무엇입니까?</h3>
+        <h3 className="text-lg font-light text-white tracking-tight">지금 머릿속을 복잡하게 만드는 일은 무엇인가요?</h3>
         <textarea
-          placeholder="여기에 입력하십시오."
+          placeholder="여기에 입력해 주세요."
           value={task}
           onChange={(e) => setTask(e.target.value)}
           className="w-full py-4 text-md text-zinc-100 bg-transparent border-b border-zinc-900 focus:border-[#C2A35D] outline-none transition-colors resize-none placeholder:text-zinc-800"

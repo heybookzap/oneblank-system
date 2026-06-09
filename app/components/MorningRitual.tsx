@@ -7,9 +7,9 @@ const CONDITIONS = ["피곤함", "보통", "아주 좋음"] as const;
 type Condition = (typeof CONDITIONS)[number];
 
 const DIRECTIVES: Record<Condition, string> = {
-  "피곤함": "시스템이 하향 조정한 '1분 수동 과업'만 완수하십시오. 그 외의 모든 결정은 금지됩니다.",
-  "보통": "배정된 '2분 핵심 과업'을 즉시 실행하십시오. 현재 뇌 리소스는 표준 상태입니다.",
-  "아주 좋음": "최상위 전략 과업을 처리할 적기입니다. 시스템이 제안하는 3분 딥워크에 진입하십시오.",
+  "피곤함": "무리하지 말고 오늘 배정된 '1분짜리 아주 쉬운 일'만 가볍게 끝내보세요. 다른 복잡한 생각은 하지 않아도 괜찮습니다.",
+  "보통": "오늘 배정된 '2분짜리 중요한 일'을 지금 바로 시작해 보세요. 지금 마음 상태가 평소처럼 차분하고 좋습니다.",
+  "아주 좋음": "오늘 가장 중요하고 큰일을 끝내기 가장 좋은 기회입니다. 저희가 준비해 둔 '3분 집중 행동'을 바로 시작해 보세요.",
 };
 
 function SyncIcon() {
@@ -41,8 +41,8 @@ export default function MorningRitual() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-lg font-light text-white tracking-tight">오늘의 뇌 컨디션을 선택해 주십시오.</h3>
-        <p className="text-zinc-600 text-xs font-light">상태에 따라 최적의 인지 부하가 배정됩니다.</p>
+        <h3 className="text-lg font-light text-white tracking-tight">오늘 내 몸과 마음 상태를 선택해 주세요.</h3>
+        <p className="text-zinc-600 text-xs font-light">내 상태에 딱 맞춰서 오늘 가장 하기 좋은 알맞은 일이 전해집니다.</p>
       </div>
 
       <div className="flex gap-3">

@@ -7,7 +7,7 @@ import { supabase } from '@/lib/supabase'
 function SuccessContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [status, setStatus] = useState('보안 결제 승인을 확인하고 있습니다.')
+  const [status, setStatus] = useState('결제가 잘 되었는지 확인하고 있습니다.')
 
   useEffect(() => {
     const processPaymentAndAuth = async () => {
@@ -20,7 +20,7 @@ function SuccessContent() {
         return
       }
 
-      setStatus('대표님만을 위한 전용 인지 보호 인프라를 구축하고 있습니다.')
+      setStatus('대표님을 위한 안전한 공간을 만들고 있습니다.')
 
       const email = localStorage.getItem('customerEmail') || `vvip_${Date.now()}@oneblank.com`
       const password = localStorage.getItem('customerPassword') || Math.random().toString(36).slice(-10) + 'Vv1!'
@@ -52,7 +52,7 @@ function SuccessContent() {
 
         if (!activeUserId) throw new Error('Auth alignment failed')
 
-        setStatus('초개인화 알고리즘 엔진의 영점 조준을 시작합니다.')
+        setStatus('대표님에게 딱 맞는 맞춤형 시스템을 준비하고 있습니다.')
 
         await supabase.from('profiles').upsert([
           { 
@@ -80,14 +80,14 @@ function SuccessContent() {
           }
         ])
 
-        setStatus('보호 시스템이 정렬되었습니다. 온보딩 세션으로 진입합니다.')
+        setStatus('모든 준비가 끝났습니다. 첫 시작 화면으로 이동합니다.')
         
         setTimeout(() => {
           router.push('/start')
         }, 1500)
 
       } catch (error) {
-        setStatus('시스템 동기화 중 오류가 발생했습니다. 관리자에게 문의해 주십시오.')
+        setStatus('설정 중에 문제가 생겼습니다. 다시 시도하거나 고객센터로 연락해 주세요.')
       }
     }
 
@@ -98,7 +98,7 @@ function SuccessContent() {
     <div className="text-center space-y-8 animate-in fade-in duration-1000">
       <div className="w-12 h-12 border-2 border-transparent border-t-[#C2A35D] rounded-full animate-spin mx-auto"></div>
       <h1 className="text-xl md:text-2xl font-light tracking-widest text-[#C2A35D] max-w-xl mx-auto break-keep leading-relaxed">{status}</h1>
-      <p className="text-zinc-500 text-xs tracking-wider uppercase">창을 닫지 마십시오. 인프라 조율에 약 3초가 소요됩니다.</p>
+      <p className="text-zinc-500 text-xs tracking-wider uppercase">창을 닫지 마세요. 준비하는 데 약 3초 정도 걸립니다.</p>
     </div>
   )
 }

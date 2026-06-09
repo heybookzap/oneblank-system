@@ -28,7 +28,7 @@ function ResultContent() {
         const res = await fetch("/api/slice", {
           method: "POST",
           body: JSON.stringify({ 
-            task: "현재 내 비즈니스에서 가장 병목이 되는 업무를 해결하고 싶다", 
+            task: "지금 내 일에서 가장 답답하고 막히는 부분부터 해결하고 싶다", 
             wage: parseInt(wage) 
           }),
         });
@@ -36,7 +36,7 @@ function ResultContent() {
         setPrescription(data);
       } catch (err) {
         console.error(err);
-      } finally {
+      } finaly {
         setLoading(false);
       }
     };
@@ -47,7 +47,7 @@ function ResultContent() {
     return (
       <div className="min-h-screen bg-black flex flex-col items-center justify-center space-y-6">
         <Loader2 className="text-[#C2A35D] animate-spin" size={40} />
-        <p className="text-[#C2A35D] text-[10px] tracking-[0.5em] uppercase animate-pulse">Analyzing Cognitive Assets...</p>
+        <p className="text-[#C2A35D] text-[10px] tracking-[0.5em] uppercase animate-pulse">오늘의 행동 습관을 분석하는 중...</p>
       </div>
     );
   }
@@ -62,10 +62,10 @@ function ResultContent() {
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="z-10 w-full max-w-2xl space-y-16 mt-10">
         <div className="text-center space-y-4">
-          <p className="text-zinc-500 text-xs tracking-[0.3em] uppercase">Diagnostic Report</p>
+          <p className="text-zinc-500 text-xs tracking-[0.3em] uppercase">나의 상태 진단서</p>
           <h1 className="text-4xl md:text-5xl font-light tracking-tight leading-tight">
-            매년 <span className="text-red-500 font-bold">{annualLoss}원</span>이<br />
-            대표님의 머릿속에서 증발하고 있습니다.
+            매년 <span className="text-red-500 font-bold">{annualLoss}원</span>의 가치가<br />
+            머릿속 걱정과 미룸 때문에 낭비되고 있습니다.
           </h1>
         </div>
 
@@ -75,7 +75,7 @@ function ResultContent() {
           <div className="space-y-6">
             <div className="flex items-center gap-3 text-[#C2A35D]">
               <Zap size={18} />
-              <p className="text-[11px] tracking-[0.3em] font-bold uppercase">Immediate 2-Minute Step</p>
+              <p className="text-[11px] tracking-[0.3em] font-bold uppercase">지금 바로 시작할 수 있는 2분 행동</p>
             </div>
             <h2 className="text-2xl md:text-3xl font-light text-white leading-tight break-keep">
               &quot;{prescription?.action}&quot;
@@ -87,20 +87,20 @@ function ResultContent() {
 
           <div className="pt-10 border-t border-zinc-900 flex flex-col gap-6">
             <p className="text-zinc-500 text-xs leading-relaxed text-center">
-              이 2분짜리 행동조차 결정하기 힘들다면, <br />
-              이미 대표님의 뇌는 통제권을 상실한 상태입니다.
+              이 짧은 2분짜리 행동조차 시작하기 망설여진다면, <br />
+              이미 내 머릿속이 너무 많은 고민과 걱정으로 지쳐있다는 뜻입니다.
             </p>
             <button 
               onClick={() => router.push('/checkout')}
               className="w-full py-6 bg-white text-black text-[12px] font-bold tracking-[0.2em] uppercase rounded-xl hover:bg-[#C2A35D] transition-all duration-500"
             >
-              전담 방어 시스템(VVIP) 도입하기
+              나를 위한 1대1 맞춤 관리 시작하기
             </button>
           </div>
         </div>
 
         <button onClick={() => router.push('/')} className="mx-auto flex items-center gap-2 text-zinc-600 hover:text-white transition-colors text-[10px] tracking-widest uppercase">
-          Back to base <ArrowRight size={12} />
+          첫 화면으로 돌아가기 <ArrowRight size={12} />
         </button>
       </motion.div>
     </main>

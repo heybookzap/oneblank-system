@@ -36,11 +36,11 @@ export default function LearnMorePage() {
         >
           <p className="text-[#C2A35D] text-[10px] tracking-[0.5em] font-medium mb-8 uppercase italic font-serif">Service Protocol</p>
           <h1 className="text-4xl md:text-6xl font-light tracking-tighter text-white break-keep leading-snug mb-8">
-            대표님의 &apos;고민&apos;을 <br />대신합니다.
+            머릿속의 복잡한 &apos;고민&apos;을 <br />모두 대신해 드립니다.
           </h1>
           <div className="w-[1px] h-12 bg-gradient-to-b from-[#C2A35D] to-transparent mx-auto mb-8 opacity-50"></div>
           <p className="text-zinc-400 text-lg md:text-xl font-light tracking-tight break-keep">
-            아무 생각 말고, <br className="md:hidden" />시키는 것 딱 하나만 하세요.
+            더 이상 걱정하지 마세요. <br className="md:hidden" />오늘 해야 할 딱 하나의 행동만 편하게 시작하면 됩니다.
           </p>
         </motion.section>
 
@@ -59,23 +59,23 @@ export default function LearnMorePage() {
             {[
               {
                 num: "01",
-                point: "목표만 주세요",
-                result: "계획은 다 짜드립니다."
+                point: "이루고 싶은 목표만 알려주세요",
+                result: "귀찮은 계획은 저희가 다 짜드립니다."
               },
               {
                 num: "02",
-                point: "매일 새벽 5시",
-                result: "딱 1개만 시킵니다."
+                point: "매일 아침 눈뜰 때",
+                result: "오늘 해야 할 일 딱 1개만 정해드려요."
               },
               {
                 num: "03",
-                point: "피곤한 날엔",
-                result: "강제로 쉬게 합니다."
+                point: "몸과 마음이 피곤한 날",
+                result: "걱정 없이 마음 편히 쉬게 해드려요."
               },
               {
                 num: "04",
-                point: "주말에는",
-                result: "아예 접속을 막습니다."
+                point: "즐거운 주말에는",
+                result: "일 생각을 완전히 머릿속에서 꺼드려요."
               }
             ].map((item, idx) => (
               <motion.div 

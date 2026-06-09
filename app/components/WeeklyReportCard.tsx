@@ -54,12 +54,12 @@ export default function WeeklyReportCard({ userName, insight, appliedFrom, gener
           <div className="flex items-center gap-2">
             <div className="w-1 h-1 rounded-full bg-[#C2A35D] animate-pulse" />
             <p className="text-[10px] text-zinc-600 font-light">
-              {appliedFrom}부터 알고리즘 자동 적용됨
+              {appliedFrom}부터 자동으로 적용됨
             </p>
           </div>
           <div className="px-4 py-1.5 rounded-full border border-[#C2A35D]/20 bg-[#C2A35D]/5">
             <p className="text-[9px] font-bold text-[#C2A35D] tracking-[0.2em] uppercase">
-              배정 완료
+              준비 완료
             </p>
           </div>
         </div>

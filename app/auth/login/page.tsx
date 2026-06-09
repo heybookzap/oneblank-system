@@ -25,7 +25,7 @@ export default function LoginPage() {
       })
 
       if (error) {
-        alert('이메일 또는 비밀번호가 일치하지 않습니다.')
+        alert('아이디(이메일)나 비밀번호가 올바르지 않습니다.')
         setIsProcessing(false)
         return
       }
@@ -45,7 +45,7 @@ export default function LoginPage() {
       }
       
     } catch (err) {
-      alert('시스템 접속 중 오류가 발생했습니다.')
+      alert('로그인하는 중에 문제가 생겼습니다.')
       setIsProcessing(false)
     }
   }
@@ -76,7 +76,7 @@ export default function LoginPage() {
           <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-white">
             Members Only
           </h1>
-          <p className="text-zinc-500 text-[10px] tracking-[0.4em] font-medium uppercase">시스템 통제권 확인</p>
+          <p className="text-zinc-500 text-[10px] tracking-[0.4em] font-medium uppercase">회원 확인</p>
         </div>
 
         <form onSubmit={handleLoginSubmit} className="w-full space-y-10">
@@ -105,7 +105,7 @@ export default function LoginPage() {
               <div className="w-3 h-3 border border-zinc-700 group-hover:border-[#C2A35D] transition-colors"></div>
               <span className="text-zinc-500 text-[10px] tracking-widest font-light">로그인 유지</span>
             </label>
-            <button type="button" onClick={() => alert('고객센터로 문의해 주십시오.')} className="text-zinc-600 hover:text-zinc-300 text-[10px] tracking-widest font-light transition-colors">
+            <button type="button" onClick={() => alert('고객센터로 연락해 주세요.')} className="text-zinc-600 hover:text-zinc-300 text-[10px] tracking-widest font-light transition-colors">
               비밀번호 재설정
             </button>
           </div>
@@ -115,13 +115,13 @@ export default function LoginPage() {
             disabled={isProcessing}
             className="w-full py-6 mt-4 bg-white text-black text-[13px] tracking-[0.2em] font-bold hover:bg-[#C2A35D] transition-all duration-500 uppercase rounded-xl shadow-xl disabled:opacity-50"
           >
-            {isProcessing ? "신분 확인 중..." : "시스템 접속하기"}
+            {isProcessing ? "확인하는 중..." : "로그인하기"}
           </button>
         </form>
         
         <div className="mt-12 pt-8 border-t border-zinc-900 w-full text-center">
           <button onClick={() => router.push('/auth/signup')} className="text-[#C2A35D] hover:text-white text-[10px] tracking-[0.3em] font-bold uppercase transition-colors">
-            아직 권한이 없으신가요? (Join)
+            아직 가입 안 하셨나요? (회원가입)
           </button>
         </div>
       </motion.div>

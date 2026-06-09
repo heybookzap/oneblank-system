@@ -11,11 +11,11 @@ type Props = {
 };
 
 const LEVELS = [
-  { score: 1, label: "가벼움", sub: "기계적 실행" },
-  { score: 2, label: "보통", sub: "약간 집중" },
-  { score: 3, label: "몰입", sub: "평균적 소모" },
-  { score: 4, label: "무거움", sub: "뇌 리소스 소모" },
-  { score: 5, label: "한계", sub: "에너지 소진" },
+  { score: 1, label: "가벼움", sub: "생각 없이 바로 함" },
+  { score: 2, label: "보통", sub: "조금 집중함" },
+  { score: 3, label: "몰입", sub: "적당히 힘듦" },
+  { score: 4, label: "무거움", sub: "머리를 많이 씀" },
+  { score: 5, label: "한계", sub: "힘이 다 빠짐" },
 ] as const;
 
 const SCORE_STYLES: Record<number, { idle: string; active: string; bar: string }> = {
@@ -63,8 +63,8 @@ export default function QuickFeedbackModal({ isOpen, missionTitle, onSubmit, onC
                 <motion.div key="question" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-8 space-y-8">
                   <div className="space-y-2">
                     <p className="text-[10px] font-bold tracking-[0.4em] text-[#C2A35D] uppercase font-serif italic">Mission Report</p>
-                    <h2 className="text-xl font-light text-white leading-tight tracking-tight break-keep">
-                      방금 하신 일은 <br /><span className="text-[#C2A35D] font-bold">얼마나 머리를 쓰셨나요?</span>
+                    <h2 className="text-xl md:text-2xl font-light text-white leading-tight tracking-tight break-keep">
+                      방금 하신 일은 <br /><span className="text-[#C2A35D] font-bold">머리를 얼마나 많이 써야 했나요?</span>
                     </h2>
                   </div>
 
@@ -103,8 +103,8 @@ export default function QuickFeedbackModal({ isOpen, missionTitle, onSubmit, onC
                     <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-2 h-2 rounded-full bg-[#C2A35D]" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-bold text-white">동기화 완료</p>
-                    <p className="text-xs text-zinc-600">내일 지침의 강도에 반영됩니다.</p>
+                    <p className="text-sm font-bold text-white">저장 완료</p>
+                    <p className="text-xs text-zinc-600">내일 알려드릴 일의 난이도에 적용됩니다.</p>
                   </div>
                 </motion.div>
               )}

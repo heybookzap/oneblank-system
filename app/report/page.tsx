@@ -7,10 +7,10 @@ export default function ReportPage() {
   const router = useRouter()
 
   const metrics = [
-    { label: "결정 마찰 시간 소멸 (Friction Time Defended)", value: "4,500 min", desc: "고민하느라 낭비될 뻔한 시간 완벽 세이브" },
-    { label: "업무 착수 속도 (Time-to-Execution)", value: "12x Faster", desc: "망설임 없이 즉시 행동에 돌입한 속도 지표" },
-    { label: "결정 품질 지수 (Decision Quality Index)", value: "98%", desc: "에너지가 최상일 때 내린 전략적 판단 비율" },
-    { label: "누적 자산 가치 방어 (Total ROI)", value: "₩ 22,500,000", desc: "인지 에너지를 돈으로 환산한 방어 금액" }
+    { label: "망설이다 버릴 뻔한 시간 아끼기 (Friction Time Defended)", value: "4,500 min", desc: "할 일을 미루고 고민하느라 낭비될 뻔한 시간을 완벽하게 아꼈습니다." },
+    { label: "일을 시작하는 속도 (Time-to-Execution)", value: "12x Faster", desc: "망설이지 않고 오늘 해야 할 일에 바로 뛰어든 속도입니다." },
+    { label: "좋은 컨디션으로 내린 결정 비율 (Decision Quality Index)", value: "98%", desc: "몸과 마음이 가장 맑고 쌩쌩할 때 결정한 아주 좋은 선택들입니다." },
+    { label: "돈으로 환산한 내 노력의 가치 (Total ROI)", value: "₩ 22,500,000", desc: "아까운 시간과 에너지를 돈으로 계산했을 때 벌어들인 금액입니다." }
   ]
 
   return (
@@ -32,7 +32,7 @@ export default function ReportPage() {
           <p className="text-[#C2A35D] text-[11px] tracking-[0.5em] font-bold font-serif italic uppercase">Cognitive Analytics</p>
           <h1 className="text-3xl md:text-5xl font-light tracking-tight text-white break-keep leading-tight">
             대표님이 시스템을 통해 <br />
-            <span className="font-serif italic font-bold text-[#C2A35D]">방어해낸 실제 가치</span>입니다.
+            <span className="font-serif italic font-bold text-[#C2A35D]">아껴낸 진짜 소중한 가치</span>입니다.
           </h1>
         </div>
 
@@ -46,7 +46,7 @@ export default function ReportPage() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="bg-[#0A0A0A] border border-zinc-900 rounded-[24px] p-8 text-left relative overflow-hidden group hover:border-zinc-800 transition-all"
             >
-              <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-[#C2A35D] to-transparent opacity-40" />
+              <div className="absolute top-0 left-0 w-[1px] h-[full bg-gradient-to-b from-[#C2A35D] to-transparent opacity-40" />
               <p className="text-zinc-500 text-xs tracking-wider font-light mb-2">{item.label}</p>
               <p className="text-3xl font-bold text-white tracking-tight mb-3 group-hover:text-[#C2A35D] transition-colors">{item.value}</p>
               <p className="text-zinc-400 text-sm font-light break-keep">{item.desc}</p>
@@ -56,13 +56,13 @@ export default function ReportPage() {
 
         <div className="bg-[#0A0A0A] border border-zinc-900 rounded-[32px] p-8 md:p-12 text-left space-y-12">
           <div className="border-b border-zinc-900 pb-6">
-            <h2 className="text-xl font-medium text-white tracking-wide">인지 에너지 및 업무 가시성 리포트</h2>
+            <h2 className="text-xl font-medium text-white tracking-wide">내 시간과 에너지가 얼마나 절약되었는지 보여주는 성과 리포트</h2>
           </div>
 
           <div className="space-y-8">
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-zinc-400 font-light">도입 전 업무 착수 속도 (망설임 및 지연 시간)</span>
+                <span className="text-zinc-400 font-light">시스템을 쓰기 전 일을 시작할 때까지 망설인 시간</span>
                 <span className="text-zinc-500 font-mono">180분</span>
               </div>
               <div className="w-full h-2 bg-zinc-900 rounded-full overflow-hidden">
@@ -72,7 +72,7 @@ export default function ReportPage() {
 
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-[#C2A35D] font-medium">도입 후 업무 착수 속도 (즉시 실행 돌입)</span>
+                <span className="text-[#C2A35D] font-medium">시스템을 쓰고 나서 일을 시작하는 데 걸린 시간</span>
                 <span className="text-[#C2A35D] font-mono font-bold">2분</span>
               </div>
               <div className="w-full h-2 bg-zinc-900 rounded-full overflow-hidden">
@@ -83,8 +83,8 @@ export default function ReportPage() {
 
           <div className="pt-6 border-t border-zinc-900 text-center">
             <p className="text-zinc-500 text-[14px] font-light leading-relaxed break-keep">
-              이 팩트 기반 데이터는 대표님이 허공에 버릴 뻔한 수십 배의 구독료 가치를 완벽히 증명합니다. <br />
-              불필요한 생각과 소음은 시스템에 맡기고, 오직 본질적인 의사결정에만 집중하십시오.
+              이 정확한 기록은 대표님이 버릴 뻔한 아까운 시간과 돈을 확실하게 아꼈다는 증거입니다. <br />
+              머리 아픈 계획과 복잡한 잡생각은 시스템에 편하게 맡겨두고, 가장 중요한 행동에만 가볍게 집중해 보세요.
             </p>
           </div>
         </div>

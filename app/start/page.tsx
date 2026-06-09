@@ -64,8 +64,8 @@ export default function StartPage() {
 
       setStep(3);
     } catch (err) {
-      alert('시스템 동기화 중 오류가 발생했습니다.');
-    } finally {
+      alert('저장하는 중에 오류가 생겼습니다. 잠시 후 다시 시도해 주세요.');
+    } finaly {
       setLoading(false);
     }
   };
@@ -85,8 +85,8 @@ export default function StartPage() {
           >
             <div className="space-y-12">
               <div className="space-y-4">
-                <p className="text-zinc-200 text-lg font-light tracking-tight">입장이 허가되었습니다.</p>
-                <p className="text-zinc-200 text-lg font-light tracking-tight">까다로운 심사를 통과하신 것을 환영합니다.</p>
+                <p className="text-zinc-200 text-lg font-light tracking-tight">회원 확인이 완료되었습니다.</p>
+                <p className="text-zinc-200 text-lg font-light tracking-tight">원 블랭크 회원이 되신 것을 진심으로 환영합니다.</p>
               </div>
               <button 
                 onClick={nextStep}
@@ -95,8 +95,8 @@ export default function StartPage() {
                 다음
               </button>
               <p className="text-zinc-400 text-sm font-light leading-relaxed pt-4">
-                지금 이 순간부터, 대표님의 뇌를 갉아먹던 모든 <br />
-                <span className="font-serif italic font-bold text-[#C2A35D] text-lg">'의사결정 피로'</span>는 시스템이 온전히 대신 짊어집니다.
+                지금 이 순간부터, 매일 하던 머리 아픈 걱정과 고민은 <br />
+                <span className="font-serif italic font-bold text-[#C2A35D] text-lg">'머리 아픈 걱정과 고민'</span>은 저희가 모두 대신해 드립니다.
               </p>
             </div>
           </motion.section>
@@ -112,30 +112,30 @@ export default function StartPage() {
           >
             <div className="space-y-16 w-full max-w-2xl">
               <div className="space-y-4">
-                <p className="text-zinc-200 text-lg font-light">시스템에 위임할 단 하나의</p>
+                <p className="text-zinc-200 text-lg font-light">저희에게 맡겨주실 가장 이루고 싶은</p>
                 <h2 className="font-serif italic font-bold text-[#C2A35D] text-3xl tracking-tight uppercase">
-                  &apos;거대 목표(Dream Outcome)&apos;
+                  &apos;커다란 목표&apos;
                 </h2>
-                <p className="text-zinc-200 text-lg font-light">를 입력하십시오.</p>
-                <p className="text-zinc-600 text-xs font-light pt-2">(예: 6개월 내 월 매출 1억 돌파, 신규 브랜드 성공적 런칭 등)</p>
+                <p className="text-zinc-200 text-lg font-light">를 적어주세요.</p>
+                <p className="text-zinc-600 text-xs font-light pt-2">(예: 6달 안에 목표 금액 달성하기, 나만의 멋진 프로젝트 성공시키기 등)</p>
               </div>
               <textarea 
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
-                placeholder="결과만 적으십시오. 과정은 시스템이 쪼갭니다."
+                placeholder="이루고 싶은 결과만 적어주세요. 중간 과정은 저희가 알아서 작게 나눠 드릴게요."
                 rows={1}
                 className="w-full py-6 text-2xl text-zinc-100 bg-transparent border-b border-zinc-800 focus:border-[#C2A35D] outline-none transition-colors text-center font-light placeholder:text-zinc-800"
               />
               <div className="space-y-8">
                 <p className="text-zinc-500 text-xs font-light leading-relaxed max-w-md mx-auto">
-                  이 목표를 기준으로 시스템이 대표님만의 맞춤형 실행 경로를 학습합니다. 목표 변경 시 재설정 기간이 소요되니 신중히 입력해 주십시오.
+                  이 목표를 바탕으로 회원님에게 딱 맞는 매일의 행동을 준비합니다. 목표를 바꾸면 다시 준비하는 데 시간이 걸릴 수 있으니 신중하게 적어주세요.
                 </p>
                 <button 
                   onClick={handleGoalSubmit}
                   disabled={!goal.trim() || loading}
                   className="w-full py-6 bg-zinc-900 text-zinc-500 text-sm font-bold tracking-[0.2em] uppercase disabled:opacity-50 hover:bg-[#C2A35D] hover:text-black transition-all"
                 >
-                  {loading ? "SYSTEM SYNCING..." : "내 뇌의 통제권 위임하기"}
+                  {loading ? "준비 중..." : "목표 저장하고 시작하기"}
                 </button>
               </div>
             </div>
@@ -156,21 +156,21 @@ export default function StartPage() {
                 </svg>
               </div>
               <div className="space-y-6">
-                <p className="text-zinc-200 text-lg font-light">목표가 시스템에 성공적으로 <span className="font-serif italic font-bold text-[#C2A35D]">이식</span>되었습니다.</p>
-                <p className="text-zinc-200 text-lg font-light">대표님의 역할은 끝났습니다. 이제 <span className="font-serif italic font-bold text-[#C2A35D]">뇌를 끄십시오.</span></p>
+                <p className="text-zinc-200 text-lg font-light">목표가 안전하게 <span className="font-serif italic font-bold text-[#C2A35D]">저장</span>되었습니다.</p>
+                <p className="text-zinc-200 text-lg font-light">이제 회원님이 할 일은 끝났습니다. 이제 <span className="font-serif italic font-bold text-[#C2A35D]">마음 편히 쉬세요.</span></p>
               </div>
               <p className="text-zinc-400 text-base font-light leading-relaxed">
-                시스템이 <span className="font-serif italic font-bold text-[#C2A35D]">1,250만</span> 개의 상위 1% 데이터를 기반으로 <br />
-                이 목표를 분해<span className="text-[#C2A35D] font-bold ml-1">(Slicing)</span>하기 시작합니다.
+                성공한 사람들의 수많은 데이터를 바탕으로 <br />
+                이 목표를 가장 쉬운 행동으로 잘게 나누기 시작합니다.
               </p>
               <p className="text-zinc-200 text-lg font-light">
-                <span className="font-serif italic font-bold text-[#C2A35D]">내일 05:00 AM</span>, 첫 번째 단일 지침서와 함께 찾아뵙겠습니다.
+                <span className="font-serif italic font-bold text-[#C2A35D]">내일 아침 5시</span>, 첫 번째 오늘 할 일과 함께 찾아올게요.
               </p>
               <button 
                 onClick={() => router.push('/dashboard')}
                 className="text-zinc-600 text-xs tracking-widest uppercase hover:text-white transition-colors"
               >
-                [ 시스템 대기 모드 진입 ]
+                [ 대시보드로 이동하기 ]
               </button>
             </div>
           </motion.section>

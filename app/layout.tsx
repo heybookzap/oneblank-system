@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'ONE BLANK',
-  description: '영구적인 인지 보호 시스템',
+  description: '머릿속 걱정을 비우고 바로 행동하게 돕는 공간',
 }
 
 export default function RootLayout({

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 export default function CleansingPopup({ tier, onDismiss }: { tier: string; onDismiss: () => void }) {
   const getMessage = () => {
-    if (tier === "VVIP" || tier === "Elite") return "엘리트 방어 시스템이 재정렬되었습니다. 완벽히 명료한 상태로 시작하십시오.";
-    if (tier === "Core") return "시스템 인지 기록이 정화되었습니다. 이제 본질에만 집중하십시오.";
-    return "어제의 모든 부하가 소멸되었습니다. 가벼운 마음으로 진입하십시오.";
+    if (tier === "VVIP" || tier === "Elite") return "머릿속 모든 고민들이 깨끗하게 정리되었습니다. 아주 맑고 편안한 마음으로 하루를 시작해 보세요.";
+    if (tier === "Core") return "어제 밀렸던 걱정과 계획들이 깨끗하게 지워졌습니다. 이제 오늘 할 일에만 마음 편하게 집중해 보세요.";
+    return "어제 쌓였던 스트레스와 마음의 짐이 모두 사라졌습니다. 가벼운 마음으로 시작해 보세요.";
   };
 
   return (
@@ -29,7 +29,7 @@ export default function CleansingPopup({ tier, onDismiss }: { tier: string; onDi
           onClick={onDismiss} 
           className="w-full py-5 bg-[#C2A35D] text-black font-bold text-[11px] tracking-[0.2em] uppercase rounded-xl hover:bg-white transition-all duration-500 shadow-lg"
         >
-          명료한 상태로 진입합니다
+          가벼운 마음으로 시작하기
         </button>
       </motion.div>
     </div>
