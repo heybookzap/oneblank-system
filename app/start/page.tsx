@@ -65,7 +65,7 @@ export default function StartPage() {
       setStep(3);
     } catch (err) {
       alert('저장하는 중에 오류가 생겼습니다. 잠시 후 다시 시도해 주세요.');
-    } finaly {
+    } finally {
       setLoading(false);
     }
   };

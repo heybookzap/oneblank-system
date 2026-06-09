@@ -36,7 +36,7 @@ function ResultContent() {
         setPrescription(data);
       } catch (err) {
         console.error(err);
-      } finaly {
+      } finally {
         setLoading(false);
       }
     };
