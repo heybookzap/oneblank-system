@@ -40,7 +40,7 @@ export default function TermsPage() {
           <section className="space-y-6">
             <h2 className="text-lg text-white font-medium tracking-tight italic">제 1조 (목적)</h2>
             <p>
-              이 약관은 주식회사 원블랭크(이하 "회사")가 제공하는 원블랭크 서비스(이하 "서비스")를 이용할 때, 회사와 회원 사이에 서로 지켜야 할 규칙과 권리, 책임, 그리고 환불에 대한 내용을 쉽게 정해두는 것을 목적으로 합니다.
+              원 블랭크는 대표님이 매일 아침 가장 먼저 해야 할 한 가지를 정해드리고, 그 외의 모든 결정과 계획을 대신 처리해 드리는 서비스입니다. 이 약관은 회사와 회원이 서로 지켜야 할 내용을 정한 것입니다.
             </p>
           </section>
 
@@ -58,20 +58,23 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-6">
               <div className="bg-[#0A0A0A] border border-[#C2A35D]/30 p-8 rounded-2xl space-y-4">
-                <p className="text-[#C2A35D] font-bold text-base">[ 14일 동안 마음 편히 써보는 100% 안심 보장 ]</p>
+                <p className="text-[#C2A35D] font-bold text-base">[ 14일 안에 효과를 못 느끼면, 100% 환불해 드립니다 ]</p>
                 <p className="text-zinc-200 leading-relaxed">
-                  원블랭크는 대표님의 확실한 변화를 약속합니다. 결제 후 14일 동안, 매일 아침 시스템이 전해주는 '2분짜리 쉬운 행동'을 하루도 빠짐없이 완료(체크인)하셨음에도 불구하고 머릿속 걱정과 미루는 습관이 전혀 줄어들지 않았다면 확인 후 곧바로 100% 전액 환불해 드립니다.
+                  결제 후 14일 동안 사용해보시고, &apos;오늘 뭐부터 해야 하지&apos;라는 고민이 단 하루도 줄지 않았다면 저희 책임입니다. 이유를 묻지 않고 전액 환불해 드립니다. 단, 처음 결제하실 때 1회만 적용됩니다.
                 </p>
               </div>
               <ul className="list-disc pl-5 space-y-4 text-zinc-400">
                 <li>
-                  <span className="text-white font-medium">[14일이 지난 후 환불]:</span> 결제하고 14일이 지난 후에 취소하고 싶다면, 이미 이용한 날짜만큼의 금액과 취소 수수료(전체 금액의 10%)를 제외한 나머지 금액을 돌려드립니다.
+                  <span className="text-white font-medium">[ 14일 전액 환불 ]:</span> 결제 후 14일 안에는 이유를 따지지 않고 전액 환불해 드립니다. 처음 결제하실 때 1회만 적용되며, 14일이 지난 후에는 남은 기간만큼 계산해 돌려드립니다.
                 </li>
                 <li>
-                  <span className="text-white font-medium">[1년 결제 중간 취소]:</span> 1년치를 한 번에 결제한 후 도중에 취소하면, 이미 이용한 기간에 대해 한 달 정상 가격(39만 원)으로 계산해서 빼고, 취소 수수료를 제외한 남은 금액을 돌려드립니다.
+                  <span className="text-white font-medium">[ 정기 결제 해지 안내 ]:</span> 월 구독은 다음 결제일 3일 전까지 알려주시면 다음 달 결제가 진행되지 않습니다. 연 구독은 도중에 해지하셔도, 사용하지 않은 기간만큼 정확히 계산해 돌려드립니다.
                 </li>
                 <li>
-                  환불 신청은 고객센터 이메일(support@oneblank.co.kr)로 받으며, 확인 후 주말을 제외한 평일 기준으로 3~5일 안에 처리해 드립니다.
+                  <span className="text-white font-medium">[ 해지하셔도, 잃는 건 없습니다 ]:</span> 구독을 해지하시면, 그동안 쌓인 모든 기록은 60일 동안 안전하게 무료로 보관됩니다. 따로 내셔야 할 비용은 없습니다. 60일 안에 다시 시작하시면, 모든 기록은 그대로 이어집니다. 60일이 지나면 기록은 안전하게 삭제됩니다.
+                </li>
+                <li>
+                  환불 문의: support@oneblank.co.kr
                 </li>
               </ul>
             </div>

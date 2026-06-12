@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function AdminDashboardPage() {
   const router = useRouter()
   
-  const [adminTab, setAdminTab] = useState<'ANALYTICS' | 'PREVIEW'>('PREVIEW')
+  // 탭 상태에 'KEY_DESK'를 추가하여 계정 발급 화면을 연결했습니다.
+  const [adminTab, setAdminTab] = useState<'ANALYTICS' | 'PREVIEW' | 'KEY_DESK'>('PREVIEW')
   const [previewView, setPreviewView] = useState<'SLICING' | 'WELCOME_BACK' | 'CONDITION' | 'REPORT' | 'VALUE' | 'DONE'>('SLICING')
   const [condition, setCondition] = useState('보통')
   const [isCheckingIn, setIsCheckingIn] = useState(false)
@@ -23,6 +24,12 @@ export default function AdminDashboardPage() {
     '보통': { action: '', benefit: '', loss: '', mindset: '' },
     '피곤함': { action: '', benefit: '', loss: '', mindset: '' }
   })
+
+  // VVIP 계정 발급을 위한 새로운 상태값들입니다.
+  const [issueEmail, setIssueEmail] = useState("")
+  const [issuePassword, setIssuePassword] = useState("")
+  const [issueName, setIssueName] = useState("")
+  const [isIssuing, setIsIssuing] = useState(false)
 
   useEffect(() => {
     const updateTime = () => {
@@ -48,6 +55,29 @@ export default function AdminDashboardPage() {
     await new Promise(resolve => setTimeout(resolve, 1500))
     setIsCheckingIn(false)
     setPreviewView('VALUE')
+  }
+
+  // 계정 발급 처리 함수입니다.
+  const handleCreateAccount = async () => {
+    setIsIssuing(true)
+    try {
+      const res = await fetch("/api/admin/create-user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: issueEmail, password: issuePassword, name: issueName }),
+      })
+
+      if (!res.ok) throw new Error("계정 발급에 실패했습니다.")
+
+      alert(`[${issueName}] 고객의 VVIP 계정이 성공적으로 발급되었습니다.`)
+      setIssueEmail("")
+      setIssuePassword("")
+      setIssueName("")
+    } catch (error) {
+      alert("오류가 발생했습니다. 시스템 연결 상태를 확인해 주세요.")
+    } finally {
+      setIsIssuing(false)
+    }
   }
 
   const mockMetrics = {
@@ -133,6 +163,8 @@ export default function AdminDashboardPage() {
         <div className="flex bg-zinc-900/50 p-1 rounded-md border border-zinc-800">
           <button onClick={() => setAdminTab('ANALYTICS')} className={`px-6 py-2 text-[11px] font-bold tracking-widest uppercase rounded-sm transition-all ${adminTab === 'ANALYTICS' ? 'bg-[#C2A35D] text-black' : 'text-zinc-500 hover:text-white'}`}>Data Analytics</button>
           <button onClick={() => setAdminTab('PREVIEW')} className={`px-6 py-2 text-[11px] font-bold tracking-widest uppercase rounded-sm transition-all ${adminTab === 'PREVIEW' ? 'bg-[#C2A35D] text-black' : 'text-zinc-500 hover:text-white'}`}>UI Preview</button>
+          {/* 새로 추가된 발급 데스크 탭입니다 */}
+          <button onClick={() => setAdminTab('KEY_DESK')} className={`px-6 py-2 text-[11px] font-bold tracking-widest uppercase rounded-sm transition-all ${adminTab === 'KEY_DESK' ? 'bg-[#C2A35D] text-black' : 'text-zinc-500 hover:text-white'}`}>Key Desk</button>
         </div>
         <button onClick={() => router.push('/')} className="text-zinc-500 hover:text-white text-[10px] tracking-widest uppercase transition-colors">[ Exit ]</button>
       </div>
@@ -386,6 +418,62 @@ export default function AdminDashboardPage() {
             </div>
           </motion.div>
         )}
+
+        {/* 새로 추가된 KEY_DESK 화면입니다 */}
+        {adminTab === 'KEY_DESK' && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1 flex items-center justify-center p-6">
+            <div className="bg-[#0A0A0A] border border-zinc-800 p-10 w-full max-w-lg shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C2A35D] to-transparent opacity-50"></div>
+              
+              <div className="text-center mb-10">
+                <h2 className="text-white text-2xl font-serif italic tracking-tight mb-2">VVIP 마스터 키 발급</h2>
+                <p className="text-zinc-500 text-xs font-light">입금이 확인된 고객에게 임시 접속 권한을 강제로 생성하여 부여합니다.</p>
+              </div>
+
+              <div className="space-y-6 text-left">
+                <div className="space-y-2">
+                  <label className="text-zinc-400 text-xs tracking-widest uppercase">Customer Name</label>
+                  <input
+                    type="text"
+                    value={issueName}
+                    onChange={(e) => setIssueName(e.target.value)}
+                    placeholder="고객 이름"
+                    className="w-full bg-black border border-zinc-800 text-white p-4 outline-none focus:border-[#C2A35D] transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-zinc-400 text-xs tracking-widest uppercase">Email Address</label>
+                  <input
+                    type="email"
+                    value={issueEmail}
+                    onChange={(e) => setIssueEmail(e.target.value)}
+                    placeholder="접속에 사용할 이메일"
+                    className="w-full bg-black border border-zinc-800 text-white p-4 outline-none focus:border-[#C2A35D] transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-zinc-400 text-xs tracking-widest uppercase">Temporary Password</label>
+                  <input
+                    type="text"
+                    value={issuePassword}
+                    onChange={(e) => setIssuePassword(e.target.value)}
+                    placeholder="임시 비밀번호 (예: 1234)"
+                    className="w-full bg-black border border-zinc-800 text-white p-4 outline-none focus:border-[#C2A35D] transition-colors"
+                  />
+                </div>
+
+                <button
+                  onClick={handleCreateAccount}
+                  disabled={isIssuing || !issueEmail || !issuePassword}
+                  className="w-full bg-white text-black font-bold py-5 mt-4 disabled:opacity-50 hover:bg-[#C2A35D] transition-colors uppercase tracking-[0.2em] text-[11px]"
+                >
+                  {isIssuing ? '발급 중...' : '계정 발급 및 승인'}
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
       </div>
 
       <AnimatePresence>
@@ -408,7 +496,7 @@ export default function AdminDashboardPage() {
                 ))}
               </div>
 
-              <div className="space-y-10">
+              <div className="space-y-10 text-left">
                 <div>
                   <label className="block text-[#C2A35D] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase">1. 지금 바로 해야 할 한 가지</label>
                   <textarea value={reportDrafts[selectedConditionTab].action} onChange={(e) => handleDraftChange('action', e.target.value)} className="w-full bg-[#111111] border border-zinc-800 rounded-2xl p-6 text-zinc-300 text-[16px] leading-[1.8] tracking-wide focus:border-[#C2A35D] focus:outline-none min-h-[120px]" />
@@ -424,7 +512,7 @@ export default function AdminDashboardPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[#C2A35D] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase">3. 머릿속 걱정 바꾸기</label>
+                  <label className="block text-[#C2A35D] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase">3. 머릿속 걱 바꾸기</label>
                   <textarea value={reportDrafts[selectedConditionTab].mindset} onChange={(e) => handleDraftChange('mindset', e.target.value)} className="w-full bg-[#111111] border border-zinc-800 rounded-2xl p-6 text-zinc-300 text-[16px] leading-[1.8] tracking-wide focus:border-[#C2A35D] focus:outline-none min-h-[100px]" />
                 </div>
               </div>
@@ -440,4 +528,3 @@ export default function AdminDashboardPage() {
     </main>
   )
 }
-        

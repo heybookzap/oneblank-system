@@ -80,13 +80,14 @@ export default function LandingPage() {
               </h1>
               <div className="space-y-6 max-w-3xl mb-12 px-4">
                 <h2 className="text-lg md:text-2xl font-light text-white tracking-widest leading-relaxed break-keep">
-                  <span className="font-serif italic font-bold text-[#C2A35D]">월 1,000만 원</span> 이상 벌고 있지만,<br />
-                  잘해야 한다는 걱정과 매일 하는 수많은 결정 때문에 혼자서 모든 짐을 지고 있는<br />
-                  창업가분들을 위한 특별한 공간입니다.
+                  <span className="font-serif italic font-bold text-[#C2A35D]">월 1,000만 원</span>을 벌면서도,<br />
+                  매일 아침 눈을 뜨자마자 &apos;오늘 뭐부터 하지&apos;부터 떠올리는<br />
+                  분들을 위한 곳입니다.
                 </h2>
                 <p className="text-zinc-300 text-sm md:text-base font-light tracking-wide leading-relaxed">
-                  매일 아침 무엇부터 시작해야 할지, 저희가 대표님의 고민을 대신 해결해 드려요.<br />
-                  대표님은 이제 마음 편히 쉬거나, 진짜 중요한 일에만 더 집중해 보세요.
+                  작은 결정은 이제 저희 몫입니다.<br />
+                  오늘 가장 먼저 할 일 하나만 받으시고, 그 시간엔 정말 중요한 결정에만 집중하세요.<br />
+                  사업의 다음 한 수는, 언제나 대표님이 두는 겁니다.
                 </p>
               </div>
               <button onClick={() => setShowHero(false)} className="px-10 py-5 bg-white text-black text-[13px] font-bold tracking-[0.1em] hover:bg-[#C2A35D] transition-colors uppercase rounded-none shadow-2xl">
@@ -95,12 +96,17 @@ export default function LandingPage() {
             </motion.div>
           ) : !selectedVal ? (
             <motion.div key="selection" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="w-full text-center space-y-16 max-w-[400px] mt-8">
-              <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white leading-snug">
-                <span className="whitespace-nowrap">대표님의 <span className="font-serif italic font-bold text-[#C2A35D]">1시간</span> 가치는</span><br />
-                어느 정도인가요? 직접 선택해 주세요.
-              </h2>
-              <div className="border-t border-zinc-800">
-                {[30000, 50000, 100000].map((val) => (
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white leading-snug">
+                  지금 이 순간에도, 고민으로 흘러가는 1시간이 있습니다.<br />
+                  대표님의 1시간은 대략 얼마쯤일까요?
+                </h2>
+                <p className="text-zinc-400 text-sm font-light">
+                  정확한 숫자가 아니어도 괜찮습니다. 비슷한 걸로 골라주세요.
+                </p>
+              </div>
+              <div className="border-t border-zinc-800 mt-8">
+                {[50000, 100000, 200000].map((val) => (
                   <button 
                     key={val} 
                     onClick={() => handleSelectWage(val)}
@@ -115,20 +121,23 @@ export default function LandingPage() {
           ) : (
             <motion.div key="result" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center space-y-12 mt-8">
               <div className="text-center space-y-8">
-                <p className="text-zinc-400 text-[11px] tracking-[0.4em] font-medium uppercase">매달 나도 모르게 낭비되고 있는 아까운 돈</p>
+                <p className="text-zinc-400 text-[11px] tracking-[0.4em] font-medium uppercase">계산해보니, 이만큼이었습니다.</p>
                 <h2 className="text-6xl md:text-[90px] font-serif italic font-bold tracking-tighter text-[#C2A35D] leading-none drop-shadow-2xl">
                   - ₩ {loss.toLocaleString()}
                 </h2>
                 <div className="w-[1px] h-10 bg-[#C2A35D]/30 mx-auto"></div>
-                <div className="space-y-4 max-w-xl mx-auto px-4">
+                <div className="space-y-6 max-w-xl mx-auto px-4">
                   <p className="text-white text-base md:text-lg font-light leading-relaxed tracking-wide">
-                    매일 아침 무엇을 할지 고민하고 망설이느라 흘려보내는 <span className="font-serif italic font-bold text-[#C2A35D]">4시간.</span><br />
-                    그 아까운 시간 동안 대표님의 진짜 돈이 조용히 새어나가고 있어요.
+                    매일 아침 무엇부터 할지 고민하고 망설이느라 흘려보내는 <span className="font-serif italic font-bold text-[#C2A35D]">4시간.</span><br />
+                    그 시간 동안, 대표님의 진짜 돈이 소리 없이 빠져나가고 있었습니다.
+                  </p>
+                  <p className="text-[#C2A35D] text-lg font-serif italic font-bold tracking-wide">
+                    이 돈, 다시 가져올 수 있습니다.
                   </p>
                 </div>
               </div>
               <button onClick={handleStartPayment} className="w-full max-w-[400px] py-6 bg-white text-black text-[13px] tracking-[0.2em] font-bold hover:bg-[#C2A35D] transition-colors uppercase rounded-none shadow-2xl">
-                월 39만 원으로 내 아까운 시간과 돈 지키기
+                월 39만 원으로, 매달 {(loss / 10000).toLocaleString()}만 원 이상 되찾아오기
               </button>
             </motion.div>
           )}
@@ -165,7 +174,7 @@ export default function LandingPage() {
                     <section className="space-y-4">
                       <h2 className="text-white text-lg font-bold">제 1조 (목적)</h2>
                       <p className="text-zinc-400 text-sm leading-relaxed break-keep">
-                        원 블랭크는 대표님의 복잡한 생각을 정리해 주고 가장 중요한 목표를 가볍게 이룰 수 있도록 돕는 특별한 공간입니다. 이 약관은 회사와 회원 사이에 서로 지켜야 할 약속을 정해두는 것을 목적으로 합니다.
+                        원 블랭크는 대표님이 매일 아침 가장 먼저 해야 할 한 가지를 정해드리고, 그 외의 모든 결정과 계획을 대신 처리해 드리는 서비스입니다. 이 약관은 회사와 회원이 서로 지켜야 할 내용을 정한 것입니다.
                       </p>
                     </section>
                   </div>
@@ -174,9 +183,9 @@ export default function LandingPage() {
                   <div className="space-y-10">
                     <h2 className="text-white text-2xl font-light tracking-tight border-b border-zinc-800 pb-4 font-serif italic">취소 및 환불 안내</h2>
                     <div className="bg-[#0A0A0A] border border-[#C2A35D]/30 p-10 rounded-3xl space-y-6">
-                      <h2 className="text-[#C2A35D] text-lg font-bold">[ 14일 동안 마음 편히 써보는 100% 안심 보장 ]</h2>
+                      <h2 className="text-[#C2A35D] text-lg font-bold">[ 14일 안에 효과를 못 느끼면, 100% 환불해 드립니다 ]</h2>
                       <p className="text-zinc-200 text-[16px] leading-relaxed break-keep font-medium">
-                        서비스를 이용하고 14일 안에, 단 한 번이라도 원 블랭크가 내 고민을 줄여주지 못했다고 생각하신다면 저희가 약속을 지키지 못한 것입니다. 이유를 묻지 않고 곧바로 100% 전액 환불해 드립니다.
+                        결제 후 14일 동안 사용해보시고, &apos;오늘 뭐부터 해야 하지&apos;라는 고민이 단 하루도 줄지 않았다면 저희 책임입니다. 이유를 묻지 않고 전액 환불해 드립니다. 단, 처음 결제하실 때 1회만 적용됩니다.
                       </p>
                     </div>
                     <div className="space-y-10 pt-10 border-t border-zinc-900">
@@ -184,15 +193,20 @@ export default function LandingPage() {
                         <h2 className="text-white text-lg font-medium tracking-tight italic">자세한 환불 기준 안내</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-zinc-400 leading-relaxed">
                           <div className="space-y-4 bg-zinc-900/30 p-6 rounded-2xl">
-                            <p className="text-white font-bold">[ 14일 전액 환불 규칙 ]</p>
-                            <p>- 결제하고 14일이 지나지 않았을 때 마음에 들지 않으면 100% 환불해 드립니다. (처음 1회만 가능)</p>
-                            <p>- 단, 14일이 지난 후에는 남은 날짜만큼 계산해서 돌려드립니다.</p>
+                            <p className="text-white font-bold">[ 14일 전액 환불 ]</p>
+                            <p>- 결제 후 14일 안에는 이유를 따지지 않고 전액 환불해 드립니다. 처음 결제하실 때 1회만 적용되며, 14일이 지난 후에는 남은 기간만큼 계산해 돌려드립니다.</p>
                           </div>
                           <div className="space-y-4 bg-zinc-900/30 p-6 rounded-2xl">
-                            <p className="text-white font-bold">[ 한 달/1년 이용 취소 안내 ]</p>
-                            <p>- 한 달 구독: 다음 결제일 3일 전까지 취소하면 다음 달 돈이 나가지 않아요.</p>
-                            <p>- 1년 구독: 도중에 취소하면 이용한 기간만큼 정산하고 남은 금액을 돌려드립니다.</p>
+                            <p className="text-white font-bold">[ 정기 결제 해지 안내 ]</p>
+                            <p>- 월 구독은 다음 결제일 3일 전까지 알려주시면 다음 달 결제가 진행되지 않습니다. 연 구독은 도중에 해지하셔도, 사용하지 않은 기간만큼 정확히 계산해 돌려드립니다.</p>
                           </div>
+                        </div>
+                      </section>
+                      <section className="space-y-4 pt-6 border-t border-zinc-900/50">
+                        <h2 className="text-white text-lg font-medium tracking-tight italic">해지하셔도, 잃는 건 없습니다</h2>
+                        <div className="space-y-2 text-sm text-zinc-400">
+                          <p>- 구독을 해지하시면, 그동안 쌓인 모든 기록은 60일 동안 안전하게 무료로 보관됩니다. 따로 내셔야 할 비용은 없습니다.</p>
+                          <p>- 60일 안에 다시 시작하시면, 모든 기록은 그대로 이어집니다. 60일이 지나면 기록은 안전하게 삭제됩니다.</p>
                         </div>
                       </section>
                       <p className="text-zinc-600 text-xs text-center">환불 문의: support@oneblank.co.kr</p>
@@ -203,12 +217,12 @@ export default function LandingPage() {
                   <div className="space-y-10">
                     <h2 className="text-white text-2xl font-light tracking-tight border-b border-zinc-800 pb-4 font-serif italic">개인정보 처리방침</h2>
                     <div className="text-[16px] text-zinc-300 leading-[1.8] space-y-8 font-light tracking-wide break-keep italic">
-                      "대표님의 모든 목표와 개인 정보는 암호로 안전하게 바뀌어 소중하게 보호됩니다."
+                      "대표님이 입력하시는 모든 목표와 고민은 암호화되어 저장되며, 오직 대표님만을 위한 추천을 만드는 데에만 사용됩니다. 어떤 경우에도 외부에 공유되거나 판매되지 않습니다."
                     </div>
                     <div className="text-sm text-zinc-400 space-y-4 border-t border-zinc-800 pt-8">
-                      <p>1. 모으는 정보: 이메일 주소, 결제 기록, 서비스 이용 기록.</p>
-                      <p>2. 모으는 이유: 회원 확인 및 맞춤형 오늘 할 일 만들기.</p>
-                      <p>3. 보관 기간: 서비스를 해지하거나 법에서 정한 보관 기간이 지나면 즉시 안전하게 지웁니다.</p>
+                      <p>1. 모으는 정보: 이메일 주소, 결제 기록, 서비스 이용 기록, 그리고 대표님이 입력하시는 목표와 고민 내용.</p>
+                      <p>2. 모으는 이유: 회원 확인, 그리고 대표님의 상황에 맞는 오늘의 행동을 만들기 위해서입니다.</p>
+                      <p>3. 보관 기간: 서비스를 해지하시면 60일 동안 안전하게 보관한 뒤 삭제합니다. 법으로 더 오래 가지고 있어야 하는 정보는, 그 기간만큼만 예외로 둡니다.</p>
                     </div>
                   </div>
                 )}

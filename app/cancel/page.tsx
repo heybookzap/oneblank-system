@@ -3,48 +3,41 @@
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 
-export default function PaymentCancelPage() {
+export default function CancelPage() {
   const router = useRouter()
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 font-pretendard relative selection:bg-[#C2A35D] selection:text-black">
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(194,163,93,0.03)_0%,_transparent_70%)] pointer-events-none z-0"></div>
+      
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(194,163,93,0.04)_0%,_transparent_70%)] pointer-events-none z-0"></div>
 
       <motion.div 
-        initial={{ opacity: 0, y: 10 }} 
+        initial={{ opacity: 0, y: 20 }} 
         animate={{ opacity: 1, y: 0 }} 
-        className="text-center space-y-12 z-10 max-w-xl"
+        transition={{ duration: 0.8 }}
+        className="z-10 text-center max-w-2xl space-y-12"
       >
-        <div className="space-y-6">
-          <p className="text-[#C2A35D] text-[11px] tracking-[0.5em] font-medium uppercase italic">Canceled</p>
-          <h1 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
-            결제가 중간에 멈췄습니다.
-          </h1>
-          <p className="text-zinc-500 text-lg font-light leading-relaxed break-keep">
-            아직 시작하기가 망설여지시나요?<br />
-            원하실 때 언제든 가벼운 마음으로 다시 찾아와 주세요.
-          </p>
-        </div>
+        <h1 className="text-4xl md:text-5xl font-serif italic font-light tracking-tight text-white">
+          수고하셨습니다.
+        </h1>
+        
+        <div className="w-[1px] h-16 bg-gradient-to-b from-[#C2A35D] to-transparent mx-auto opacity-50"></div>
 
-        <div className="flex flex-col gap-4 pt-8">
-          <button 
-            onClick={() => router.push('/checkout')} 
-            className="w-full py-5 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-[#C2A35D] transition-all rounded-xl shadow-2xl"
-          >
-            다시 시도하기
-          </button>
+        <p className="text-zinc-400 text-lg font-light leading-loose break-keep">
+          구독은 오늘부로 정리됩니다.<br />
+          그동안 쌓인 대표님의 모든 기록은 60일 동안 안전하게, 무료로 보관됩니다.<br />
+          60일 안에 다시 오시면, 모든 기록은 그대로 이어집니다.
+        </p>
+
+        <div className="pt-16">
           <button 
             onClick={() => router.push('/')} 
-            className="text-zinc-600 hover:text-white text-[11px] tracking-widest uppercase transition-colors"
+            className="text-zinc-600 hover:text-white text-[11px] tracking-[0.3em] font-light uppercase transition-colors"
           >
-            첫 화면으로 가기
+            [ 홈으로 돌아가기 ]
           </button>
         </div>
       </motion.div>
-
-      <footer className="absolute bottom-10 w-full text-center">
-        <p className="text-zinc-800 text-[9px] tracking-[0.4em] uppercase font-light italic">ONE BLANK · 마음 편한 행동 시스템</p>
-      </footer>
     </main>
   )
 }

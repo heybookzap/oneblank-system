@@ -86,8 +86,8 @@ export default function CheckoutPage() {
       localStorage.setItem('customerPassword', password)
 
       let orderNameValue = 'Core 월 구독'
-      if (plan === 'yearly') orderNameValue = 'Core 연 구독 (VVIP)'
-      if (plan === 'premium') orderNameValue = 'Premium 플랜 (VVIP)'
+      if (plan === 'yearly') orderNameValue = 'Core 연 구독 (추천 플랜)'
+      if (plan === 'premium') orderNameValue = 'Premium 플랜'
 
       await widgets.requestPayment({
         orderId: "ORDER_" + Date.now(),
@@ -118,7 +118,7 @@ export default function CheckoutPage() {
         <div className="text-center mb-12 mt-6 max-w-4xl mx-auto space-y-4">
           <p className="text-[#C2A35D] text-[11px] tracking-[0.4em] font-medium uppercase">Step {step.toString().padStart(2, '0')}</p>
           <h1 className="text-2xl md:text-4xl font-light tracking-tight text-white leading-tight break-keep">
-            {step === 1 ? "대표님, 현재 내 상황과 고민에 딱 맞는 알맞은 플랜을 선택해 주세요." : "가입하는 분의 정보 입력"}
+            {step === 1 ? "이제 마지막 결정만 남았습니다. 대표님의 상황에 맞는 플랜을 골라주세요." : "내일 아침부터, 다른 하루가 시작됩니다."}
           </h1>
         </div>
 
@@ -127,6 +127,7 @@ export default function CheckoutPage() {
             <motion.div key="step1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto mb-16">
                 
+                {/* 프리미엄 플랜 */}
                 <div className="bg-[#050505] border border-zinc-800 p-8 flex flex-col justify-between hover:border-zinc-700 transition-all duration-500 rounded-[32px]">
                   <div className="space-y-8 text-left">
                     <div className="space-y-3">
@@ -138,7 +139,11 @@ export default function CheckoutPage() {
                       <p className="text-[#C2A35D] text-[11px] font-light tracking-wide">특별 회원 전용 (단 30명 한정 자리)</p>
                     </div>
                     <div className="space-y-4 border-t border-zinc-800 pt-6">
-                      {["인공지능(AI)을 넘어 최고 전문가가 내 일과 고민을 직접 꼼꼼하게 관리해 줍니다.", "중요한 비밀과 복잡한 결정을 1대1로 나에게 딱 맞춰 설계하고 이끌어 줍니다.", "개인 정보와 비밀을 완벽하게 숨겨주는 가장 안전한 보안 시스템이 들어있습니다."].map((f) => (
+                      {[
+                        "사업이 커질수록, 정작 중요한 결정은 더 외로워집니다. 그 결정을 함께 짊어질 담당 전문가가 1대1로 곁에 있습니다.",
+                        "AI를 넘어, 대표님의 사업과 일상을 매일 직접 들여다보고 함께 풀어갑니다.",
+                        "모든 정보는 가장 높은 수준의 보안으로 관리되며, 오직 담당 전문가만 접근할 수 있습니다."
+                      ].map((f) => (
                         <div key={f} className="flex items-start gap-2 text-xs text-zinc-400 font-light leading-snug">
                           <span className="text-[#C2A35D]">•</span> <span>{f}</span>
                         </div>
@@ -148,6 +153,7 @@ export default function CheckoutPage() {
                   <button onClick={() => handlePlanSelect('premium')} className="w-full mt-10 py-4.5 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 rounded-xl">특별 회원 상담 신청하기</button>
                 </div>
 
+                {/* 추천 플랜 (연 구독) */}
                 <div className="bg-[#0A0A0A] border border-[#C2A35D]/50 p-8 flex flex-col justify-between hover:border-[#C2A35D] transition-all duration-500 rounded-[32px] relative shadow-[0_20px_40px_rgba(194,163,93,0.08)] overflow-hidden scale-105 z-10">
                   <div className="absolute top-6 right-8">
                     <span className="bg-[#C2A35D] text-black text-[9px] px-3 py-1.5 font-bold tracking-widest uppercase rounded-full">추천 플랜</span>
@@ -159,10 +165,21 @@ export default function CheckoutPage() {
                         <span className="text-3xl font-serif italic font-bold text-white tracking-tighter">₩ 3,900,000</span>
                         <span className="text-zinc-500 text-sm">/ 년</span>
                       </div>
-                      <p className="text-[#C2A35D] text-[11px] font-light tracking-wide">(2달 무료 혜택을 드리고 평생 똑같은 금액으로 보호해 드립니다)</p>
+                      <p className="text-[#C2A35D] text-[11px] font-light tracking-wide leading-relaxed">
+                        (한 달에 32.5만 원 정도 · 2달 무료 · <br />
+                        이번 달 결제시, 평생 같은 가격으로 유지)
+                      </p>
                     </div>
                     <div className="space-y-4 border-t border-zinc-800 pt-6">
-                      {["매일 아침 '뭐부터 해야 하지?' 고민하며 낭비하는 시간과 스트레스를 전부 대신 처리해 드립니다.", "할 일을 정하느라 아깝게 버려지는 소중한 기회비용과 시간을 확실하게 아껴드립니다.", "내가 해야 할 복잡한 일을 새벽 5시마다 2분 만에 끝낼 수 있는 아주 쉬운 행동으로 쪼개서 매일 아침 전해드립니다.", "[보너스] 내 행동과 계획 습관을 정밀하게 분석해 주는 특별한 진단 도구를 바로 열어드립니다."].map((f) => (
+                      <p className="text-xs text-zinc-300 font-light leading-snug pb-2">
+                        1년 구독을 추천하는 이유는 단순합니다. 매일 아침의 변화가 눈에 보이기까지, 보통 몇 달이 걸리기 때문입니다.
+                      </p>
+                      {[
+                        "계산해 보신 것처럼, 매달 360만 원 가까이 사라지던 시간이 이제 대표님 것이 됩니다.",
+                        "의지가 없어도 자연스럽게 움직이게 되는 환경을, 1년 동안 만들어 드립니다.",
+                        "복잡한 일은 새벽마다 2분짜리 행동으로 쪼개져서, 매일 아침 가장 먼저 도착합니다.",
+                        "[가입 즉시 보너스] 지금까지 쌓인 대표님의 실행 기록을 살펴봐 주는 전용 분석 도구가 열립니다."
+                      ].map((f) => (
                         <div key={f} className="flex items-start gap-2 text-xs text-zinc-300 font-light leading-snug">
                           <span className="text-[#C2A35D]">•</span> <span>{f}</span>
                         </div>
@@ -172,6 +189,7 @@ export default function CheckoutPage() {
                   <button onClick={() => handlePlanSelect('yearly')} className="w-full mt-10 py-4.5 bg-white text-black text-[11px] font-bold tracking-widest uppercase hover:bg-[#C2A35D] transition-all duration-500 rounded-xl shadow-xl">가장 똑똑하게 시작하기</button>
                 </div>
 
+                {/* 월 구독 */}
                 <div className="bg-[#050505] border border-zinc-800 p-8 flex flex-col justify-between hover:border-zinc-700 transition-all duration-500 rounded-[32px]">
                   <div className="space-y-8 text-left">
                     <div className="space-y-3">
@@ -183,7 +201,11 @@ export default function CheckoutPage() {
                       <p className="text-zinc-600 text-[11px] font-light tracking-wide">기본 요금제 사양</p>
                     </div>
                     <div className="space-y-4 border-t border-zinc-800 pt-6">
-                      {["내 굳은 의지가 없어도 무조건 움직일 수밖에 없는 완벽한 자동 환경을 만들어 줍니다.", "복잡한 고민을 입력창에 쏟아내면 머리 아픈 계획과 생각을 시스템이 전부 대신해 줍니다.", "매일 아침 눈뜨자마자 오늘 할 딱 1가지 행동을 받고, 끝난 뒤 10초 만에 누르면 끝납니다."].map((f) => (
+                      {[
+                        "의지가 없어도 자연스럽게 움직이게 되는 환경을 만들어 드립니다.",
+                        "복잡한 고민을 입력하면, 머리 아픈 계획과 생각은 시스템이 대신 정리합니다.",
+                        "매일 아침 눈뜨자마자 오늘 할 단 1가지 행동을 받고, 끝나면 10초 만에 체크하면 됩니다."
+                      ].map((f) => (
                         <div key={f} className="flex items-start gap-2 text-xs text-zinc-400 font-light leading-snug">
                           <span className="text-[#C2A35D]">•</span> <span>{f}</span>
                         </div>
@@ -194,6 +216,13 @@ export default function CheckoutPage() {
                 </div>
 
               </div>
+              
+              <div className="text-center pt-8 border-t border-zinc-900">
+                <p className="text-zinc-400 text-sm font-light leading-relaxed break-keep">
+                  어떤 플랜을 선택하시든, 이번에 결제하시는 분들에 한해서는 <br />
+                  해지 시 위약금은 없으며 기록은 60일간 보관됩니다.
+                </p>
+              </div>
             </motion.div>
           ) : (
             <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="max-w-xl mx-auto w-full space-y-12">
@@ -201,7 +230,7 @@ export default function CheckoutPage() {
                 <div className="space-y-1">
                   <p className="text-zinc-400 text-[11px] tracking-widest uppercase font-medium">선택된 플랜</p>
                   <p className="text-md font-light text-white">
-                    {plan === 'premium' ? 'Premium 플랜 (VVIP)' : plan === 'yearly' ? 'Core 연 구독 (VVIP)' : 'Core 월 구독'}
+                    {plan === 'premium' ? 'Premium 플랜' : plan === 'yearly' ? 'Core 연 구독 (추천 플랜)' : 'Core 월 구독'}
                   </p>
                 </div>
                 <button onClick={() => setStep(1)} className="text-zinc-400 hover:text-white text-[11px] tracking-widest uppercase underline underline-offset-4 transition-colors">변경하기</button>
@@ -218,12 +247,12 @@ export default function CheckoutPage() {
                       {agreed && <span className="text-black text-xs">•</span>}
                     </div>
                     <p className="text-[13px] text-zinc-300 leading-relaxed font-light">
-                      <button onClick={() => setOverlayType('terms')} className="text-white font-medium hover:text-[#C2A35D] underline underline-offset-4 transition-all">이용약관</button> 및 <button onClick={() => setOverlayType('refund')} className="text-white font-medium hover:text-[#C2A35D] underline underline-offset-4 transition-all">환불규정</button>에 동의하며, 결제와 동시에 멤버 계정이 생성됨을 확인합니다.
+                      <button onClick={() => setOverlayType('terms')} className="text-white font-medium hover:text-[#C2A35D] underline underline-offset-4 transition-all">이용약관</button>과 <button onClick={() => setOverlayType('refund')} className="text-white font-medium hover:text-[#C2A35D] underline underline-offset-4 transition-all">환불규정</button>에 동의합니다. 결제 즉시 계정이 만들어집니다.
                     </p>
                   </div>
                   <div className="flex flex-col gap-3">
                     <button onClick={openPaymentModal} className="w-full py-6 bg-white text-black text-[14px] font-bold tracking-[0.1em] hover:bg-zinc-200 transition-all uppercase rounded-xl shadow-xl">
-                      ₩ {plan === 'premium' ? '1,500,000' : plan === 'yearly' ? '3,900,000' : '390,000'} 결제 및 계정 생성
+                      ₩ {plan === 'premium' ? '1,500,000' : plan === 'yearly' ? '3,900,000' : '390,000'} 결제하고 시작하기
                     </button>
                     <p className="text-center text-zinc-500 text-[11px] tracking-widest uppercase mt-2">Secure SSL Connection</p>
                   </div>
